@@ -23,7 +23,7 @@
                         </div>
                         <h:form enctype="multipart/form-data">
                         <div class="datagrid">
-                            <h:button class="btn btn-primary col-sm-2" value="Agregar Usuario" outcome="usuarioRegistro"></h:button>
+                            <h:commandButton class="btn btn-primary col-sm-2" value="Agregar Usuario" action="#{personaBean.irARegistro()}"></h:commandButton>
                             <h:button class="btn btn-warning col-sm-2" value="Ver Inactivos" outcome="usuarioInactivos"></h:button>
                             <h:dataTable class="table table-hover" value="#{personaBean.listaTablaPersonas}" var="per" style="text-align: center">
                                 <h:column class="text-success">

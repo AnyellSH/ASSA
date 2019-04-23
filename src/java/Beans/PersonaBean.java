@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Map;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.naming.NamingException;
@@ -154,7 +155,14 @@ public class PersonaBean implements Serializable {
         this.tiposTelefono = tiposTelefono;
     }
 
-    public LinkedList<Telefono> getListaTablaTelefonos(int idPersona) throws SNMPExceptions, SQLException {
+    public LinkedList<Telefono> getListaTablaTelefonos() throws SNMPExceptions, SQLException{
+        int id = this.getIdPersona();
+        LinkedList<Telefono> lista = new LinkedList<Telefono>();
+        lista = getTablaTelefonos(id);
+        return lista;
+    }
+    
+    public LinkedList<Telefono> getTablaTelefonos(int idPersona) throws SNMPExceptions, SQLException {
         LinkedList<Telefono> lista = new LinkedList<Telefono>();
         TelefonoDB telDB = new TelefonoDB();
         lista = telDB.SeleccionarTodos(idPersona);
@@ -437,6 +445,7 @@ public class PersonaBean implements Serializable {
     }
 
     public String agregarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        
         Estado = 0;
         Persona obj = new Persona(this.getIdTipoIdentificacion(), this.getIdentificacion(), this.getNombre(), this.getpApellido(), this.getsApellido(),
                 this.getContrasenna(), this.getIdRol(), this.getEstado(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
@@ -462,7 +471,7 @@ public class PersonaBean implements Serializable {
         int idPersonaAgregada = this.getIdPersona(); 
         telDB.GuardarTelefonoPersona(this.getIdTelefono(), idPersonaAgregada);
         this.limpiaCamposTelefono();
-        this.getListaTablaTelefonos(idPersonaAgregada);
+        this.setListaTablaTelefonos(this.getListaTablaTelefonos());
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
     
@@ -491,6 +500,14 @@ public class PersonaBean implements Serializable {
         this.setFeRegistra(per.getFeEdita());
         this.setIdUsuEdita(per.getIdUsuEdita());
         this.setFeEdita(per.getFeEdita());
+    }
+    
+    public String irARegistro(){
+        this.limpia();
+        this.limpiaCamposTelefono();
+        this.cssClass = "hidden";
+        this.hideButtons = "";
+        return "usuarioRegistro.xhtml?faces-redirect=true";
     }
 
 }
