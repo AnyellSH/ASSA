@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>ASSA Catálogo</title>
+        <!-- Custom styles for this template -->
+        <h:outputStylesheet name="css/starter-template.css"/>
+
+    </ui:define>
+    <ui:define name="body">
+        <!-- COMIENZA SEC SOLICITUDES -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-6">
+                        <div class="title_sec">
+                            <h1>Correo</h1>
+
+                        </div>
+
+
+                        <h:form enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <h:outputLabel for="codigo" value="Código:" class="col-sm-2 col-form-label"></h:outputLabel>
+                                <div class="col-sm-5">
+                                    <h:inputText value="" class="form-control" id="codigo"></h:inputText>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <h:outputLabel for="codigo" value="Correo:" class="col-sm-2 col-form-label"></h:outputLabel>
+                                <div class="col-sm-8">
+                                    <h:inputText value="" class="form-control" id="correo"></h:inputText>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <h:outputLabel for="estado" value="Estado:" class="col-sm-2 col-form-label"></h:outputLabel>
+                                <div class="col-sm-10">
+                                    <h:selectBooleanCheckbox value="#{productosBean.estadoV}" class="form-check-input" id="activo"></h:selectBooleanCheckbox>
+                                    <h:outputLabel for="activo" value="Activo" class="col-sm-2 col-form-label"></h:outputLabel>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <h:outputLabel for="" value="" class="col-sm-2 col-form-label"></h:outputLabel>
+                                <div class="col-sm-10">
+                                    <h:selectBooleanCheckbox value="#{productosBean.estadoF}" class="form-check-input" id="inactivo"></h:selectBooleanCheckbox>
+                                    <h:outputLabel for="inactivo" value="Inactivo" class="col-sm-2 col-form-label"></h:outputLabel>
+                                </div>
+                            </div>
+                            <div class="form-group-row">
+                                <div class="col-sm-10">
+                                    <h:commandButton value="Agregar" action="#" class="btn btn-success col-sm-4"></h:commandButton>
+                                    <h:commandButton value="Cancelar" action="#" class="btn btn-warning col-sm-4" />
+                                </div>
+                            </div>
+
+                            
+                            <br></br>
+                            <br></br>
+                            <div class="datagrid">
+                                <h:dataTable  var="producc" style="text-align: center">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Codigo"></h:outputText>
+                                        </f:facet>
+                                        <h:outputText ></h:outputText>
+                                    </h:column>
+
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Correo"></h:outputText>
+                                        </f:facet>
+                                        <h:outputText ></h:outputText>
+                                    </h:column>
+
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Estado"></h:outputText>
+                                        </f:facet>
+                                        <h:outputText ></h:outputText>
+                                    </h:column>
+                                    
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Editar Correo" ></h:outputText>
+                                        </f:facet>
+                                        <h:commandButton value="Editar"  action="#{productosBean.asignaValores(producc)}" ></h:commandButton>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Eliminar Correo"></h:outputText>
+                                        </f:facet>
+                                        <h:commandButton value="Eliminar" action="#{productosBean.eliminarProducto(producc)}" ></h:commandButton>
+                                    </h:column>
+                                </h:dataTable>
+                            </div> 
+                            <br></br>
+                            <br></br>
+                        </h:form>
+
+                    </div>				
+                </div>
+            </div>
+        <!-- TERMINA SEC SOLICITUDES -->
+    </ui:define>
+  </ui:composition>
+</html>

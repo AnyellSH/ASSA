@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>ASSA Catálogo</title>
+        <!-- Custom styles for this template -->
+        <h:outputStylesheet name="css/starter-template.css"/>
+
+    </ui:define>
+    <ui:define name="body">
+           
+        <!-- COMIENZA SEC SOLICITUDES -->
+        <section id="abt_sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
+                        <div class="title_sec">
+                            <h1>Productos</h1>
+                        </div>
+                        <h:form enctype="multipart/form-data">
+                        <div class="text-center">
+                            <h:button class="btn btn-primary col-sm-2" value="Agregar Producto" outcome="productoAgregar"></h:button>
+                            <h:button class="btn btn-warning col-sm-2" value="Ver Inactivos" outcome="productoInactivos"></h:button>
+                            <h:dataTable class="table table-hover" value="#{productosBean.listaTablaProductos}" var="producc" style="text-align: center">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Código"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{producc.idProducto}"></h:outputText>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{producc.nombreProducto}"></h:outputText>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Cantidad minima"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{producc.cantidadMinima}"></h:outputText>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Precio"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{producc.precio}"></h:outputText>
+                                </h:column>
+                                
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Imagen"></h:outputText>
+                                    </f:facet>
+                                    <h:graphicImage url="#{producc.imagen}" style="width: 40%; height: 40%"></h:graphicImage>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Editar" ></h:outputText>
+                                    </f:facet>
+                                    <h:commandButton value="Editar" class="btn btn-link" style="text-align: center" action="#{productosBean.verProducto(producc)}"></h:commandButton>
+                                </h:column>
+                                <h:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="Eliminar"></h:outputText>
+                                    </f:facet>
+                                    <h:commandButton value="Eliminar" class="btn btn-link" action="#{productosBean.eliminarProducto(producc)}" ></h:commandButton>
+                                </h:column>
+                            </h:dataTable>
+                        </div>                        
+                          
+                        </h:form>
+                    </div>				
+                </div>
+            </div>
+        </section>
+        <!-- TERMINA SEC SOLICITUDES -->
+
+        </ui:define>
+  </ui:composition>
+</html>

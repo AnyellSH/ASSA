@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>Editar Producto</title>
+        <!-- Custom styles for this template -->
+        <h:outputStylesheet name="css/starter-template.css"/>
+
+    </ui:define>
+    <ui:define name="body">
+        <f:metadata>
+            <f:viewParam name="id" value="#{productosBean.idProducto}"></f:viewParam>
+        </f:metadata>
+        <br></br>
+        <br></br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <h:form enctype="multipart/form-data">
+                        <legend>Editar Producto</legend>
+                        <div class="form-group row">
+                            <h:outputLabel for="codigo" value="Código:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-10">
+                                <h:inputText value="#{productosBean.idProducto}" class="form-control" id="codigo"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="nombre" value="Nombre:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-10">
+                                <h:inputText value="#{productosBean.nombreProducto}" class="form-control" id="nombre"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="cantidadMinima" value="Cantidad Minima:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-10">
+                                <h:inputText value="#{productosBean.cantidadMinima}" class="form-control" id="cantidadMinima"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="precio" value="Precio:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-10">
+                                <h:inputText value="#{productosBean.precio}" class="form-control" id="precio"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="estado" value="Estado:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-10">
+                                <h:selectBooleanCheckbox value="#{productosBean.estadoV}" class="form-check-input" id="activo"></h:selectBooleanCheckbox>
+                                <h:outputLabel for="activo" value="Activo" class="col-sm-2 col-form-label"></h:outputLabel>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="" value="" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-10">
+                                <h:selectBooleanCheckbox value="#{productosBean.estadoF}" class="form-check-input" id="inactivo"></h:selectBooleanCheckbox>
+                                <h:outputLabel for="inactivo" value="Inactivo" class="col-sm-2 col-form-label"></h:outputLabel>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="imagen" value="imagen:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-10">
+                                <h:inputFile value="#{productosBean.file}" readonly="true" class="form-control-file" id="file"></h:inputFile>
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="col-sm-10">
+                                <h:commandButton value="Actualizar" action="#{productosBean.actualizaDatos()}" class="btn btn-success col-sm-4"></h:commandButton>
+                                <h:commandButton value="Cancelar" action="#{productosBean.cancelar}" class="btn btn-warning col-sm-4" />
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+  </ui:composition>
+</html>
+     
+
