@@ -82,6 +82,108 @@ public class PersonaBean implements Serializable {
     LinkedList<Correo> listaTablaCorreos = new LinkedList<Correo>();
     LinkedList<Correo> listaTablaCorreosEdit = new LinkedList<Correo>();
 
+    /*Mensajes de error*/
+    String error1;
+    String error2;
+    String error3;
+    String error4;
+    String error5;
+    String error6;
+    String error7;
+    String error8;
+    String error9;
+    String error10;
+    String error11;
+
+    /*GET Y SET MENSAJES DE ERROR*/
+    public String getError1() {
+        return error1;
+    }
+
+    public void setError1(String error1) {
+        this.error1 = error1;
+    }
+
+    public String getError2() {
+        return error2;
+    }
+
+    public void setError2(String error2) {
+        this.error2 = error2;
+    }
+
+    public String getError3() {
+        return error3;
+    }
+
+    public void setError3(String error3) {
+        this.error3 = error3;
+    }
+
+    public String getError4() {
+        return error4;
+    }
+
+    public void setError4(String error4) {
+        this.error4 = error4;
+    }
+
+    public String getError5() {
+        return error5;
+    }
+
+    public void setError5(String error5) {
+        this.error5 = error5;
+    }
+
+    public String getError6() {
+        return error6;
+    }
+
+    public void setError6(String error6) {
+        this.error6 = error6;
+    }
+
+    public String getError7() {
+        return error7;
+    }
+
+    public void setError7(String error7) {
+        this.error7 = error7;
+    }
+
+    public String getError8() {
+        return error8;
+    }
+
+    public void setError8(String error8) {
+        this.error8 = error8;
+    }
+
+    public String getError9() {
+        return error9;
+    }
+
+    public void setError9(String error9) {
+        this.error9 = error9;
+    }
+
+    public String getError10() {
+        return error10;
+    }
+
+    public void setError10(String error10) {
+        this.error10 = error10;
+    }
+
+    public String getError11() {
+        return error11;
+    }
+
+    public void setError11(String error11) {
+        this.error11 = error11;
+    }
+
     public int getId() {
         return id;
     }
@@ -567,7 +669,9 @@ public class PersonaBean implements Serializable {
     }
 
     public String agregarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-
+        if (ValidarCamposNulos()) {
+            return "";
+        }
         Estado = 0;
         this.setIdRol(3);
         Persona obj = new Persona(this.getId(), this.getIdTipoIdentificacion(), this.getIdentificacion(), this.getNombre(), this.getpApellido(), this.getsApellido(),
@@ -669,5 +773,59 @@ public class PersonaBean implements Serializable {
 
     public String atras() {
         return "iniciarSesion.xhtml?faces-redirect=true";
+    }
+
+    public boolean ValidarCamposNulos() {
+        boolean bandera = false;
+        if (idTipoIdentificacion == 0) {
+            this.setError1("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError1("");
+        }
+        if (identificacion.equals("")) {
+            this.setError2("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError2("");
+        }
+        if (nombre.equals("")) {
+            this.setError3("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError3("");
+        }
+        if (pApellido.equals("")) {
+            this.setError4("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError4("");
+        }
+        if (sApellido.equals("")) {
+            this.setError5("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError5("");
+        }
+        if (contrasenna.equals("")) {
+            this.setError6("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError6("");
+        }
+        if (confcontrasenna.equals("")) {
+            this.setError7("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError7("");
+        }
+        if (!confcontrasenna.equals(confcontrasenna)) {
+            this.setError8("Contraseñas diferentes");
+            bandera = true;
+        } else {
+            this.setError8("");
+        }
+        return bandera;
+                
     }
 }
