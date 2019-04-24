@@ -191,15 +191,15 @@ public class PersonaDB {
         try {
             update = "UPDATE Persona "
                     + "SET ID_TIPO_IDENTIFICACION = " + obj.getIdTipoIdentificacion()
-                    + ",Identificacion = '" + obj.getIdentificacion()
-                    + "',Nombre = '" + obj.getNombre()
-                    + "',P_Apellido=' " + obj.getpApellido()
-                    + "',S_Apellido = '" + obj.getsApellido()
-                    + "',contrasenna = '" + obj.getContrasenna()
-                    + "',ID_ROL = " + obj.getIdRol()
+                    + ", Identificacion = '" + obj.getIdentificacion()
+                    + "', Nombre = '" + obj.getNombre()
+                    + "', P_Apellido = '" + obj.getpApellido()
+                    + "', S_Apellido = '" + obj.getsApellido()
+                    + "', contrasenna = '" + obj.getContrasenna()
+                    + "', ID_ROL = " + obj.getIdRol()
                     + ",Estado = " + obj.getEstado()
-                    + ",Id_Usu_Edita = " + obj.getIdUsuEdita()
-                    + ",Fecha_Edita = '" + obj.getFeEdita()
+                    + ", Id_Usu_Edita = " + obj.getIdUsuEdita()
+                    + ", Fecha_Edita = '" + obj.getFeEdita()
                     + "' where Id = " + obj.getId();
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(update);

@@ -25,28 +25,30 @@
                         <div class="datagrid">
                             <h:commandButton class="btn btn-primary col-sm-2" value="Agregar Usuario" action="#{personaBean.irARegistro()}"></h:commandButton>
                             <h:button class="btn btn-warning col-sm-2" value="Ver Inactivos" outcome="usuarioInactivos"></h:button>
-                            <h:dataTable class="table table-hover" value="#{personaBean.listaTablaPersonas}" var="per" style="text-align: center">
+                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaPersonas}" var="per" style="text-align: center">
                                 <h:column class="text-success">
                                     <f:facet name="header">
                                         <h:outputText value="Cédula"></h:outputText>
                                     </f:facet>
                                     <h:outputText value="#{per.identificacion}"></h:outputText>
                                 </h:column>
-
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Nombre"></h:outputText>
                                     </f:facet>
                                     <h:outputText value="#{per.nombre} #{per.pApellido}"></h:outputText>
                                 </h:column>
-
-                              
-
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Rol"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{personaBean.getRolPersona(per.idRol)}"></h:outputText>
+                                </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Editar" ></h:outputText>
                                     </f:facet>
-                                    <h:commandButton value="Editar" class="btn btn-link" style="text-align: center" action="#{productosBean.verProducto(producc)}"></h:commandButton>
+                                    <h:commandButton value="Editar" class="btn btn-link" style="text-align: center" action="#{personaBean.verPersona(per)}"></h:commandButton>
                                 </h:column>
                                 <h:column >
                                     <f:facet name="header">
