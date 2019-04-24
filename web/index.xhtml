@@ -1,32 +1,282 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-  <ui:composition template="/WEB-INF/include/template.xhtml">
-    <ui:define name="head">
-        <title>Hello JSF Bootstrap</title>
-        <!-- Custom styles for this template -->
-        <h:outputStylesheet name="css/starter-template.css"/>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+     
+    <h:head>
 
-    </ui:define>
-    <ui:define name="body">
-    
-    <div class="container">
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="img/fav.png"></link>
+        <!-- Author Meta -->
+        <meta name="author" content="CodePixar"></meta>
+        <!-- Meta Description -->
+        <meta name="description" content=""></meta>
+        <!-- Meta Keyword -->
+        <meta name="keywords" content=""></meta>
+        <!-- meta character set -->
+        <meta charset="UTF-8"></meta>
+        <!-- Site Title -->
+        <title>ASSA</title>
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-        </button>
-        <a href="productoMant.xhtml" class="btn btn-primary">Catalogo</a>
-      </div>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Roboto:400,500" rel="stylesheet"></link>
+        <!--CSS============================================= -->
+        <link rel="stylesheet" href="css/linearicons.css"></link>
+        <link rel="stylesheet" href="css/font-awesome.min.css"></link>
+        <link rel="stylesheet" href="css/availability-calendar.css"></link>
+        <link rel="stylesheet" href="css/magnific-popup.css"></link>
+        <link rel="stylesheet" href="css/nice-select.css"></link>
+        <link rel="stylesheet" href="css/owl.carousel.css"></link>
+        <link rel="stylesheet" href="css/bootstrap.css"></link>
+        <link rel="stylesheet" href="css/bootstrap-datepicker.css"></link>
+        <link rel="stylesheet" href="css/main.css"></link>
+    </h:head>
+    <h:body>
+        <!--================ Start Header Area =================-->
+        <header class="header-area">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="header-top d-flex justify-content-between align-items-center navbar-expand-md">
+                        <div class="col menu-left">
+                            <a class="active" href="mantenimientos.xhtml">Inicio</a>
+                            <a href="productos.xhtml">Productos</a>
+                            <a href="about.html">¿Quienes somos?</a>
+                        </div>
+                        <div class="col-3 logo">
+                            <a href="index.html"><img class="mx-auto" src="img/logoassa.png" alt=""></img></a>
+                        </div>
+                        <nav class="col navbar navbar-expand-md justify-content-end">
 
-    </div><!-- /.container -->
+                            <!-- Toggler/collapsibe Button -->
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                                <span class="lnr lnr-menu"></span>
+                            </button>
 
-    </ui:define>
-  </ui:composition>
-        
+                            <!-- Navbar links -->
+                            <div class="collapse navbar-collapse menu-right" id="collapsibleNavbar">
+                                <ul class="navbar-nav justify-content-center w-100">
+
+                                    <!-- Dropdown -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.xhtml">Contactos</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="iniciarSesion.xhtml">Iniciar Sesion</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!--================ Left Right And Banner Icon =================-->
+        <div class="go-down">
+            <a href="#menu_area">
+                <img class="go-down-img" src="img/ali2.jpg" alt=""></img>
+            </a>
+        </div>
+
+
+        <!--================ Left Right And Banner Icon =================-->
+        <!--================ Menu Area =================-->
+        <section class="menu-area" id="menu_area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="section-title relative">
+                            <h1>
+                                Alimentos Preparados del Sur S.A <br></br>
+                                ASSA <br></br>
+
+                            </h1>
+                            <p>Somos una empreza dedicada a la fabricacion y diseño de 
+                                alimentos preparados para restaurantes, hoteles, bares 
+                                y comercios del sector alimenticio general. ASSA somos 
+                                una empresa dedicada a suplir a pequeños y medianos emprendedores 
+                                dedicados a la franquicia de los alimentos. Somos el resultado 
+                                del esfuerzo y perseverancia de nuestros lideres y la colaboracion 
+                                y gran labor de nuestros colaboradores.</p>
+                            <a href="#" class="primary-btn text-uppercase">Nuestros Productos</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="menu-list">
+                            <div class="single-menu">
+                                <h3>Guarniciones y entradas</h3>
+                                <ul class="list">
+                                    <li>
+                                        <p class="menu-item">*Arroces </p>
+
+                                    </li>
+                                    <li>
+                                        <p class="menu-item">*Pures </p>
+
+                                    </li>
+                                    <li>
+                                        <p class="menu-item">*Cremas y Sopas </p>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="single-menu">
+                                <h3>Platos fuertes</h3>
+                                <ul class="list">
+                                    <li>
+                                        <p class="menu-item">*Carnes blancas</p>
+
+                                    </li>
+                                    <li>
+                                        <p class="menu-item">*Carnes rojas</p>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="single-menu">
+                                <h3>Postres</h3>
+                                <ul class="list">
+                                    <li>
+                                        <p class="menu-item">*Resposteria y pasteleria salada</p>
+
+                                    </li>
+                                    <li>
+                                        <p class="menu-item">*Resposteria y pasteleria dulce</p>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Menu Area =================-->
+
+        <!--================ Gallery Area =================-->
+        <section class="gallery-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-5 col-sm-6">
+                        <div class="single-gallery mt--480">
+                            <div class="overlay"></div>
+                            <figure>
+                                <img src="img/im1.jpg" class="img-fluid w-100" alt=""></img>
+                            </figure>
+                            <div class="icon">
+                                <a href="img/im1.jpg" class="photo-gallery-pop-up">
+                                    <span class="lnr lnr-cross"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-6 col-sm-6">
+                        <div class="single-gallery">
+                            <div class="overlay"></div>
+                            <figure>
+                                <img src="img/im2.jpg" class="img-fluid w-100" alt=""></img>
+                            </figure>
+                            <div class="icon">
+                                <a href="img/aim2.jpg" class="photo-gallery-pop-up">
+                                    <span class="lnr lnr-cross"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-5 col-md-5 col-sm-6">
+                        <div class="single-gallery mt--280">
+                            <div class="overlay"></div>
+                            <figure>
+                                <img src="img/im3.jpg" class="img-fluid w-100" alt=""></img>
+                            </figure>
+                            <div class="icon">
+                                <a href="img/aim3" class="photo-gallery-pop-up">
+                                    <span class="lnr lnr-cross"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="single-gallery">
+                            <div class="overlay"></div>
+                            <figure>
+                                <img src="img/im4.jpg" class="img-fluid w-100" alt=""></img>
+                            </figure>
+                            <div class="icon">
+                                <a href="img/im4.jpg" class="photo-gallery-pop-up">
+                                    <span class="lnr lnr-cross"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================ End Gallery Area =================-->
+
+        <!--================ Start Footer Area =================-->
+        <footer class="footer-area section-gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Top Products</h4>
+                            <ul>
+                                <li><a href="#">Entradas</a></li>
+                                <li><a href="#">Guarniciones</a></li>
+                                <li><a href="#">Platos fuertes</a></li>
+                                <li><a href="#">Postres</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4  col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Contactenos</h4>
+                            <p></p>
+                            <div class="" id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                      method="get">
+                                    <div class="input-group">
+
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="submit">
+                                                <span class="lnr lnr-arrow-right"></span>
+                                            </button>
+                                        </div>
+                                        <div class="info"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom row align-items-center justify-content-between">
+                    <p class="footer-text m-0 col-lg-6 col-md-12">Copyright © 2019 Alimentos Preparados del sur S.A
+                        <span class="lnr lnr-heart"></span> by <a href="#">Anyel Sanabria y Pablo Mora</a></p>
+                    <div class="col-lg-6 col-sm-12 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--================ End Footer Area =================-->
+
+        <br />
+       
+    </h:body>
 </html>
 
