@@ -45,9 +45,9 @@ INSERT INTO [dbo].[CORREO] ([Correo],[Id_Usu_Registra],[Fecha_Registra],[Id_Usu_
      VALUES ('admin@test1.com',0,'2019-04-19 18:30:45',0,'2019-04-19 18:30:45'),
 			('admin@test2.com',0,'2019-04-19 18:31:45',0,'2019-04-19 18:31:45'),
 			('empleado@test1.com',0,'2019-04-19 18:32:45',0,'2019-04-19 18:32:45'),
-			('empleado@test1.com',0,'2019-04-19 18:33:45',0,'2019-04-19 18:33:45'),
+			('empleado@test2.com',0,'2019-04-19 18:33:45',0,'2019-04-19 18:33:45'),
 			('cliente@test1.com',0,'2019-04-19 18:34:45',0,'2019-04-19 18:34:45'),
-			('cliente@test1.com',0,'2019-04-19 18:35:45',0,'2019-04-19 18:35:45')
+			('cliente@test2.com',0,'2019-04-19 18:35:45',0,'2019-04-19 18:35:45')
 GO
 
 -- Relacionar Correos con Personas
@@ -68,10 +68,10 @@ INSERT INTO [dbo].[TELEFONO]([Numero],[ID_TIPO_TELEFONO],[Id_Usu_Registra],[Fech
 			('99999999',3,0,'2019-04-19 18:48:45',0,'2019-04-19 18:48:45')
 GO
 
-
 DBCC CHECKIDENT ('TELEFONO');--, RESEED, 0);
 -- Relacionar Telefonos con Personas
 INSERT INTO [dbo].[PERSONA_TELEFONO] ([ID_PERSONA],[ID_TELEFONO])
      VALUES (1,1),(1,2),(1,3),(2,4),(2,5),(2,6),(3,7),(3,8),(3,9)
 GO
+
 

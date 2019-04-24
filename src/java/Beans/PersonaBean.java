@@ -6,6 +6,8 @@
 package Beans;
 
 import DAO.SNMPExceptions;
+import Model.Correo;
+import Model.CorreoDB;
 import Model.Persona;
 import Model.PersonaDB;
 import Model.Producto;
@@ -60,17 +62,57 @@ public class PersonaBean implements Serializable {
     String numeroTel;
     String tipoTelefono;
     int idTelefono;
+    int idCorreo;
+    String Correo;
+    Persona obj;
+    String cssClass = "hidden";
+    String hideButtons;
+    String deshabilitarCampo = "disabled";
     LinkedList<Telefono> numerosTelefono = new LinkedList<Telefono>();
     LinkedList<Persona> listaTablaPersonas = new LinkedList<Persona>();
     LinkedList<Persona> listaTablaPersonasDesactivados = new LinkedList<Persona>();
     LinkedList<Telefono> listaTablaTelefonos = new LinkedList<Telefono>();
-    Persona obj;
     LinkedList<Tipo_Identificacion> listaTipoIdentificacion = new LinkedList<Tipo_Identificacion>();
-    LinkedList<Rol> listaRoles = new LinkedList<Rol>();
     LinkedList<Tipo_Telefono> tiposTelefono = new LinkedList<Tipo_Telefono>();
-    String cssClass = "hidden";
-    String hideButtons;
-    String deshabilitarCampo = "disabled";
+    LinkedList<Rol> listaRoles = new LinkedList<Rol>();
+    LinkedList<Correo> listaTablaCorreos = new LinkedList<Correo>();
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+
+    public int getIdCorreo() throws SNMPExceptions, SQLException {
+        CorreoDB cDB = new CorreoDB();
+        return cDB.obtenerIdCorreo();
+    }
+
+    public void setIdCorreo(int idCorreo) {
+        this.idCorreo = idCorreo;
+    }
+
+    public LinkedList<Correo> getListaTablaCorreos() throws SNMPExceptions, SQLException {
+        int id = this.getIdPersona();
+        LinkedList<Correo> lista = new LinkedList<Correo>();
+        lista = getListaCorreos(id);
+        return lista;
+    }
+
+    public LinkedList<Correo> getListaCorreos(int idPersona) throws SNMPExceptions, SQLException{
+        int id = this.getIdPersona();
+        LinkedList<Correo> lista = new LinkedList<Correo>();
+        CorreoDB cDB = new CorreoDB();
+        lista  = cDB.SeleccionarTodos(id);
+        
+        return lista;
+    }
+    
+    public void setListaTablaCorreos(LinkedList<Correo> listaTablaCorreos) {
+        this.listaTablaCorreos = listaTablaCorreos;
+    }
 
     public int getIdTelefono() throws SNMPExceptions, SQLException {
         TelefonoDB telDB = new TelefonoDB();
@@ -475,9 +517,27 @@ public class PersonaBean implements Serializable {
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
     
+    public String agregarCorreo() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        
+        Correo obj = new Correo(this.getCorreo(),this.getIdUsuRegistra(),this.getFeRegistra(),this.getIdUsuEdita(),this.getFeEdita());
+        
+        CorreoDB cDB = new CorreoDB();
+
+        cDB.Guardar(obj);
+        int idPersonaAgregada = this.getIdPersona(); 
+        cDB.guardarCorreoPersona(idPersonaAgregada, this.getIdCorreo());
+        this.limpiaCamposCorreo();
+        this.setListaTablaCorreos(this.getListaTablaCorreos());
+        return "/usuarioRegistro.xhtml?faces-redirect=true";
+    }
+    
     public void limpiaCamposTelefono(){
         this.setIdTipoTelefono(0);
         this.setNumeroTel("");
+    }
+    
+    public void limpiaCamposCorreo(){
+        this.setCorreo("");
     }
 
     public void cierraSesion() throws IOException {
@@ -502,12 +562,28 @@ public class PersonaBean implements Serializable {
         this.setFeEdita(per.getFeEdita());
     }
     
+    public String eliminarTelefono(Telefono tel) throws SNMPExceptions, SQLException{
+        TelefonoDB telDB = new TelefonoDB();
+        telDB.eliminar(tel);
+        return "usuarioRegistro.xhtml?faces-redirect=true&includeViewParams=true";
+    }
+    
+    public String eliminarCorreo(Correo cor) throws SNMPExceptions, SQLException {
+        CorreoDB corDB = new CorreoDB();
+        corDB.eliminar(cor);
+        return "usuarioRegistro.xhtml?faces-redirect=true&includeViewParams=true";
+    }
+    
     public String irARegistro(){
         this.limpia();
         this.limpiaCamposTelefono();
         this.cssClass = "hidden";
         this.hideButtons = "";
         return "usuarioRegistro.xhtml?faces-redirect=true";
+    }
+    
+    public String cancelar(){
+        return "usuarioMant.xhtml?faces-redirect=true";
     }
 
 }

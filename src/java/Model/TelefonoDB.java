@@ -120,7 +120,7 @@ public class TelefonoDB {
         return otraLista;
 
     }
-    
+
     /*GUARDAR EN LA TABLA*/
     public void Guardar(Telefono telefono) throws SNMPExceptions, SQLException {
 
@@ -133,8 +133,8 @@ public class TelefonoDB {
             insert = "INSERT INTO Telefono(Numero, ID_TIPO_TELEFONO, Id_Usu_Registra, "
                     + "Fecha_Registra, Id_Usu_Edita, Fecha_Edita) "
                     + "VALUES ('" + telefono.getNumero()
-                    + "'," + telefono.getIdTipoTelefono() 
-                    + "," +telefono.getIdUsuRegistra() + ",'"
+                    + "'," + telefono.getIdTipoTelefono()
+                    + "," + telefono.getIdUsuRegistra() + ",'"
                     + telefono.getFeRegistra() + "',"
                     + telefono.getIdUsuEdita() + ",'"
                     + telefono.getFeEdita() + "')";
@@ -142,7 +142,7 @@ public class TelefonoDB {
             accesoDatos.ejecutaSQL(insert);
 
         } catch (SQLException e) {
-            error += e.toString() + e.getMessage()+ e.getErrorCode();
+            error += e.toString() + e.getMessage() + e.getErrorCode();
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
                     e.getMessage(), e.getErrorCode());
         } catch (Exception e) {
@@ -153,7 +153,7 @@ public class TelefonoDB {
             accesoDatos.cerrarConexion();
         }
     }
-    
+
     public int obtenerIdTelefono() throws SNMPExceptions, SQLException {
         int id = 0;
         String select = "";
@@ -162,10 +162,10 @@ public class TelefonoDB {
             select = "SELECT MAX(Id) FROM telefono";
             //Se ejecuta la sentencia SQL
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
-            if(rsPA.next()){
+            if (rsPA.next()) {
                 id = rsPA.getInt(1);
             }
-             
+
             rsPA.close();
 
         } catch (SQLException e) {
@@ -178,7 +178,7 @@ public class TelefonoDB {
         }
         return id;
     }
-    
+
     /*GUARDAR EN LA TABLA*/
     public void GuardarTelefonoPersona(int idTelefono, int idPersona) throws SNMPExceptions, SQLException {
 
@@ -188,8 +188,8 @@ public class TelefonoDB {
             AccesoDatos accesoDatos = new AccesoDatos();
 
             insert = "INSERT INTO PERSONA_TELEFONO (ID_PERSONA, ID_TELEFONO) "
-                    + "VALUES (" + idPersona + "," +
-                    + idTelefono + ")";
+                    + "VALUES (" + idPersona + ","
+                    + +idTelefono + ")";
 
             accesoDatos.ejecutaSQL(insert);
 
@@ -203,7 +203,7 @@ public class TelefonoDB {
             accesoDatos.cerrarConexion();
         }
     }
-    
+
 
     /*ACTUALIZAR UNO DE LA TABLA ID*/
     public LinkedList<Telefono> Actualizar(int idp, String nump, int tipp, int usup, Date fecp) throws SNMPExceptions, SQLException {
@@ -274,7 +274,7 @@ public class TelefonoDB {
                 String feEdita = rsPA.getString("Fecha_Edita");
 
                 Telefono Obj = new Telefono(id, num, idtpTel, idUsuRegistra, feRegistra, idUsuEdita, feEdita);
-                
+
                 otraLista.add(Obj);
             }
             rsPA.close();
@@ -288,6 +288,43 @@ public class TelefonoDB {
 
         }
         return otraLista;
+    }
+
+    public void eliminar(Telefono tel) throws SNMPExceptions, SQLException {
+        String delete = "";
+        
+        try {
+
+            AccesoDatos accesoDatos = new AccesoDatos();
+            delete = "DELETE FROM PERSONA_TELEFONO where ID_TELEFONO = " + tel.getId();
+            accesoDatos.ejecutaSQL(delete);
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage());
+        } finally {
+            accesoDatos.cerrarConexion();
+        }
+        
+        try {
+
+            AccesoDatos accesoDatos = new AccesoDatos();
+            delete = "DELETE FROM Telefono where id = " + tel.getId();
+            accesoDatos.ejecutaSQL(delete);
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage());
+        } finally {
+            accesoDatos.cerrarConexion();
+        }
+
     }
 
 }

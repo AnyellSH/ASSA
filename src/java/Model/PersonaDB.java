@@ -31,7 +31,7 @@ public class PersonaDB {
                     + "[P_Apellido],[S_Apellido],[Contrasenna],[ID_ROL],[Estado],"
                     + "[Id_Usu_Registra],[Fecha_Registra],[Id_Usu_Edita],[Fecha_Edita]) "
                     + "VALUES (" + obj.getIdTipoIdentificacion() + ",'" + obj.getIdentificacion() + "'"
-                    + ",'" + obj.getNombre() + "'," + obj.getpApellido() + "," + obj.getsApellido() + ",'"
+                    + ",'" + obj.getNombre() + "','" + obj.getpApellido() + "','" + obj.getsApellido() + "','"
                     + obj.getContrasenna() + "'," + obj.getIdRol() + "," + obj.getEstado() + ","
                     + obj.getIdUsuRegistra() + ",'"
                     + obj.getFeRegistra() + "',"

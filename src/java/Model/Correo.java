@@ -14,11 +14,10 @@ import java.util.Date;
 public class Correo {
     public int id;
     public String correo;    
-    public int estado;
     public int idUsuRegistra;
-    public Date feRegistra;
+    public String feRegistra;
     public int idUsuEdita;
-    public Date feEdita;
+    public String feEdita;
 
     public int getId() {
         return id;
@@ -36,14 +35,6 @@ public class Correo {
         this.correo = correo;
     }
 
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
     public int getIdUsuRegistra() {
         return idUsuRegistra;
     }
@@ -52,11 +43,11 @@ public class Correo {
         this.idUsuRegistra = idUsuRegistra;
     }
 
-    public Date getFeRegistra() {
+    public String getFeRegistra() {
         return feRegistra;
     }
 
-    public void setFeRegistra(Date feRegistra) {
+    public void setFeRegistra(String feRegistra) {
         this.feRegistra = feRegistra;
     }
 
@@ -68,24 +59,31 @@ public class Correo {
         this.idUsuEdita = idUsuEdita;
     }
 
-    public Date getFeEdita() {
+    public String getFeEdita() {
         return feEdita;
     }
 
-    public void setFeEdita(Date feEdita) {
+    public void setFeEdita(String feEdita) {
         this.feEdita = feEdita;
     }
 
-    public Correo(int id, String correo, int estado, int idUsuRegistra, Date feRegistra, int idUsuEdita, Date feEdita) {
+    public Correo(int id, String correo, int idUsuRegistra, String feRegistra, int idUsuEdita, String feEdita) {
         this.id = id;
         this.correo = correo;
-        this.estado = estado;
         this.idUsuRegistra = idUsuRegistra;
         this.feRegistra = feRegistra;
         this.idUsuEdita = idUsuEdita;
         this.feEdita = feEdita;
     }
 
+    public Correo(String correo, int idUsuRegistra, String feRegistra, int idUsuEdita, String feEdita) {
+        this.correo = correo;
+        this.idUsuRegistra = idUsuRegistra;
+        this.feRegistra = feRegistra;
+        this.idUsuEdita = idUsuEdita;
+        this.feEdita = feEdita;
+    }
+    
     public Correo() {
     }
 }

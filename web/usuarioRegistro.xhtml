@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="form-group-row">
-                            <h:dataTable class="table table-hover" value="#{personaBean.listaTablaTelefonos}" var="tel">
+                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaTelefonos}" var="tel">
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Tipo"></h:outputText>
@@ -114,12 +114,49 @@
                                     </f:facet>
                                     <h:outputText value="#{tel.numero}"></h:outputText>
                                 </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Eliminar"></h:outputText>
+                                    </f:facet>
+                                    <h:commandLink value="Eliminar" action="#{personaBean.eliminarTelefono(tel)}"></h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <h:form enctype="multipart/form-data" class="#{personaBean.cssClass}" id="correos">
+                        <legend>Correo(s)</legend>
+                        <div class="form-group row">
+                            <h:outputLabel for="correo" value="Correo:" class="col-sm-3 col-form-label"></h:outputLabel>
+                            <div class="col-sm-6">
+                                <h:inputText value="#{personaBean.correo}" class="form-control" id="correo"></h:inputText>
+                            </div>
+                            <div class="col-sm-3">
+                                <h:commandButton value="Agregar" action="#{personaBean.agregarCorreo()}" class="btn btn-success"></h:commandButton>
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaCorreos}" var="cor">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipo"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{cor.correo}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Eliminar"></h:outputText>
+                                    </f:facet>
+                                    <h:commandLink value="Eliminar" action="#{personaBean.eliminarCorreo(cor)}"></h:commandLink>
+                                </h:column>
                             </h:dataTable>
                         </div>
                         <div class="form-group-row">
                             <div class="col-sm-10">
-                                <h:commandButton value="Agregar" action="#" class="btn btn-success col-sm-4"></h:commandButton>
-                                <h:commandButton value="Cancelar" action="#" class="btn btn-warning col-sm-4" />
+                                <h:commandButton value="Regresar" action="#{personaBean.cancelar()}" class="btn btn-warning col-sm-4" />
                             </div>
                         </div>
                     </h:form>
