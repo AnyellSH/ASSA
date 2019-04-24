@@ -156,7 +156,7 @@ public class LoginBean implements Serializable {
                 this.consultarSesion();
             }
             if (obj.idRol == 2) {
-                pagina = "mantenimientos.xhtml";
+                pagina = "pagEmpleados.xhtml";
                 autenticar();
                 this.setUsuarioLogueado(obj.getNombre());
                 this.consultarSesion();
