@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+  <ui:composition template="/WEB-INF/include/template2.xhtml">
+    <ui:define name="head">
+        <title>ASSA Agregar Usuario</title>
+        <!-- Custom styles for this template -->
+        <h:outputStylesheet name="css/starter-template.css"/>   
+    </ui:define>
+      <ui:define name="body">
+          <div class="go-down" align="center">
+            <a href="#menu_area">
+                <img class="go-down-img" src="img/logoassa.png" alt=""></img>
+            </a>
+        </div>
+        
+        
+        <div align="center">
+      <section>
+        <h1>Torta de tres leches</h1>
+    </section>
+    <section>
+        <dl>
+            <dt>Deliciosa torta de tres leches:</dt>
+            <dd>Acompañada de crema chantillo y frutas frescas.</dd>
+
+            
+
+            
+        </dl>
+    </section>
+        
+        <main >
+        <section id="caja1">
+            <article class="imagenes">
+                <figure>
+                   <img src="imgcaj/3leches.jpg" />
+                    
+                </figure>
+            </article>
+                </section>
+    </main>
+        </div>
+          <br></br>
+           <br></br>
+           
+          <div align="center">
+            <font></font>
+        <h:outputLabel for="minMax" value="Cantidad de pedido " /><font></font>
+        <p:spinner id="minMax" value="#{spinnerView.number3}" min="1" max="200" /><font></font>
+<font></font>
+
+<p:button value="Realizar pedido" icon="pi pi-star" style="margin-right:20px;"><font></font>
+    <f:param name="productId" value="10" /><font></font>
+</p:button><font></font>
+            </div >
+        
+            <br></br>
+          
+      </ui:define>
+  </ui:composition>
+</html>
+

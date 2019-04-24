@@ -82,6 +82,108 @@ public class PersonaBean implements Serializable {
     LinkedList<Correo> listaTablaCorreos = new LinkedList<Correo>();
     LinkedList<Correo> listaTablaCorreosEdit = new LinkedList<Correo>();
 
+    /*Mensajes de error*/
+    String error1;
+    String error2;
+    String error3;
+    String error4;
+    String error5;
+    String error6;
+    String error7;
+    String error8;
+    String error9;
+    String error10;
+    String error11;
+
+    /*GET Y SET MENSAJES DE ERROR*/
+    public String getError1() {
+        return error1;
+    }
+
+    public void setError1(String error1) {
+        this.error1 = error1;
+    }
+
+    public String getError2() {
+        return error2;
+    }
+
+    public void setError2(String error2) {
+        this.error2 = error2;
+    }
+
+    public String getError3() {
+        return error3;
+    }
+
+    public void setError3(String error3) {
+        this.error3 = error3;
+    }
+
+    public String getError4() {
+        return error4;
+    }
+
+    public void setError4(String error4) {
+        this.error4 = error4;
+    }
+
+    public String getError5() {
+        return error5;
+    }
+
+    public void setError5(String error5) {
+        this.error5 = error5;
+    }
+
+    public String getError6() {
+        return error6;
+    }
+
+    public void setError6(String error6) {
+        this.error6 = error6;
+    }
+
+    public String getError7() {
+        return error7;
+    }
+
+    public void setError7(String error7) {
+        this.error7 = error7;
+    }
+
+    public String getError8() {
+        return error8;
+    }
+
+    public void setError8(String error8) {
+        this.error8 = error8;
+    }
+
+    public String getError9() {
+        return error9;
+    }
+
+    public void setError9(String error9) {
+        this.error9 = error9;
+    }
+
+    public String getError10() {
+        return error10;
+    }
+
+    public void setError10(String error10) {
+        this.error10 = error10;
+    }
+
+    public String getError11() {
+        return error11;
+    }
+
+    public void setError11(String error11) {
+        this.error11 = error11;
+    }
+
     public int getId() {
         return id;
     }
@@ -109,7 +211,7 @@ public class PersonaBean implements Serializable {
     public void setListaTablaCorreosEdit(LinkedList<Correo> listaTablaCorreosEdit) {
         this.listaTablaCorreosEdit = listaTablaCorreosEdit;
     }
-    
+
     public Persona getPer() {
         return per;
     }
@@ -117,14 +219,14 @@ public class PersonaBean implements Serializable {
     public void setPer(Persona per) {
         this.per = per;
     }
-    
+
     public String getRolPersona(int id) {
         String rol = "";
-        if(id == 1){
+        if (id == 1) {
             rol = "Administrador";
-        } else if (id == 2){
+        } else if (id == 2) {
             rol = "Empleado";
-        } else if (id == 3){
+        } else if (id == 3) {
             rol = "Cliente";
         }
         return rol;
@@ -134,7 +236,6 @@ public class PersonaBean implements Serializable {
         this.rolPersona = rolPersona;
     }
 
-    
     public String getCorreo() {
         return Correo;
     }
@@ -159,13 +260,13 @@ public class PersonaBean implements Serializable {
         return lista;
     }
 
-    public LinkedList<Correo> getListaCorreos(int idPersona) throws SNMPExceptions, SQLException{
+    public LinkedList<Correo> getListaCorreos(int idPersona) throws SNMPExceptions, SQLException {
         LinkedList<Correo> lista = new LinkedList<Correo>();
         CorreoDB cDB = new CorreoDB();
-        lista  = cDB.SeleccionarTodos(id);
+        lista = cDB.SeleccionarTodos(id);
         return lista;
     }
-    
+
     public void setListaTablaCorreos(LinkedList<Correo> listaTablaCorreos) {
         this.listaTablaCorreos = listaTablaCorreos;
     }
@@ -178,14 +279,14 @@ public class PersonaBean implements Serializable {
     public void setIdTelefono(int idTelefono) {
         this.idTelefono = idTelefono;
     }
-    
+
     public String getTipoTelefono(int id) {
         String tipo = "";
-        if(id == 1){
+        if (id == 1) {
             tipo = "Casa";
-        } else if (id == 2){
+        } else if (id == 2) {
             tipo = "Celular";
-        } else if (id == 3){
+        } else if (id == 3) {
             tipo = "Trabajo";
         }
         return tipo;
@@ -253,13 +354,13 @@ public class PersonaBean implements Serializable {
         this.tiposTelefono = tiposTelefono;
     }
 
-    public LinkedList<Telefono> getListaTablaTelefonos() throws SNMPExceptions, SQLException{
+    public LinkedList<Telefono> getListaTablaTelefonos() throws SNMPExceptions, SQLException {
         int id = this.getIdPersona();
         LinkedList<Telefono> lista = new LinkedList<Telefono>();
         lista = getTablaTelefonos(id);
         return lista;
     }
-    
+
     public LinkedList<Telefono> getTablaTelefonos(int idPersona) throws SNMPExceptions, SQLException {
         LinkedList<Telefono> lista = new LinkedList<Telefono>();
         TelefonoDB telDB = new TelefonoDB();
@@ -535,8 +636,8 @@ public class PersonaBean implements Serializable {
             context.invalidateSession();
         }
     }
-    
-    public void llenarCampos(Persona per) throws SNMPExceptions, SQLException{
+
+    public void llenarCampos(Persona per) throws SNMPExceptions, SQLException {
         this.setId(per.getId());
         this.setIdTipoIdentificacion(per.getIdTipoIdentificacion());
         this.setIdentificacion(per.getIdentificacion());
@@ -551,8 +652,8 @@ public class PersonaBean implements Serializable {
         this.setHideButtons("hidden");
         this.setCssClass("");
     }
-    
-    public String verPersona(Persona per) throws SNMPExceptions, SQLException{
+
+    public String verPersona(Persona per) throws SNMPExceptions, SQLException {
         this.llenarCampos(per);
         return "/usuarioEditar.xhtml?faces-redirect=true&includeViewParams=true";
     }
@@ -568,9 +669,12 @@ public class PersonaBean implements Serializable {
     }
 
     public String agregarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-        
+        if (ValidarCamposNulos()) {
+            return "";
+        }
         Estado = 0;
-        Persona obj = new Persona(this.getId(),this.getIdTipoIdentificacion(), this.getIdentificacion(), this.getNombre(), this.getpApellido(), this.getsApellido(),
+        this.setIdRol(3);
+        Persona obj = new Persona(this.getId(), this.getIdTipoIdentificacion(), this.getIdentificacion(), this.getNombre(), this.getpApellido(), this.getsApellido(),
                 this.getContrasenna(), this.getIdRol(), this.getEstado(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
 
         PersonaDB pDB = new PersonaDB();
@@ -583,41 +687,41 @@ public class PersonaBean implements Serializable {
         this.setDeshabilitarCampo("disabled");
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
-    
+
     public String agregarTelefono() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-        
-        Telefono obj = new Telefono(this.getNumeroTel(),this.getIdTipoTelefono(),this.getIdUsuRegistra(),this.getFeRegistra(),this.getIdUsuEdita(),this.getFeEdita());
-        
+
+        Telefono obj = new Telefono(this.getNumeroTel(), this.getIdTipoTelefono(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
+
         TelefonoDB telDB = new TelefonoDB();
 
         telDB.Guardar(obj);
-        int idPersonaAgregada = this.getIdPersona(); 
+        int idPersonaAgregada = this.getIdPersona();
         telDB.GuardarTelefonoPersona(this.getIdTelefono(), idPersonaAgregada);
         this.limpiaCamposTelefono();
         this.setListaTablaTelefonos(this.getListaTablaTelefonos());
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
-    
+
     public String agregarCorreo() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-        
-        Correo obj = new Correo(this.getCorreo(),this.getIdUsuRegistra(),this.getFeRegistra(),this.getIdUsuEdita(),this.getFeEdita());
-        
+
+        Correo obj = new Correo(this.getCorreo(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
+
         CorreoDB cDB = new CorreoDB();
 
         cDB.Guardar(obj);
-        int idPersonaAgregada = this.getIdPersona(); 
+        int idPersonaAgregada = this.getIdPersona();
         cDB.guardarCorreoPersona(idPersonaAgregada, this.getIdCorreo());
         this.limpiaCamposCorreo();
         this.setListaTablaCorreos(this.getListaTablaCorreos());
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
-    
-    public void limpiaCamposTelefono(){
+
+    public void limpiaCamposTelefono() {
         this.setIdTipoTelefono(0);
         this.setNumeroTel("");
     }
-    
-    public void limpiaCamposCorreo(){
+
+    public void limpiaCamposCorreo() {
         this.setCorreo("");
     }
 
@@ -642,20 +746,20 @@ public class PersonaBean implements Serializable {
         this.setIdUsuEdita(per.getIdUsuEdita());
         this.setFeEdita(per.getFeEdita());
     }
-    
-    public String eliminarTelefono(Telefono tel) throws SNMPExceptions, SQLException{
+
+    public String eliminarTelefono(Telefono tel) throws SNMPExceptions, SQLException {
         TelefonoDB telDB = new TelefonoDB();
         telDB.eliminar(tel);
         return "usuarioRegistro.xhtml?faces-redirect=true&includeViewParams=true";
     }
-    
+
     public String eliminarCorreo(Correo cor) throws SNMPExceptions, SQLException {
         CorreoDB corDB = new CorreoDB();
         corDB.eliminar(cor);
         return "usuarioRegistro.xhtml?faces-redirect=true&includeViewParams=true";
     }
-    
-    public String irARegistro(){
+
+    public String irARegistro() {
         this.limpia();
         this.limpiaCamposTelefono();
         this.cssClass = "hidden";
@@ -672,4 +776,61 @@ public class PersonaBean implements Serializable {
         return "usuarioMant.xhtml?faces-redirect=true";
     }
 
+    public String atras() {
+        return "iniciarSesion.xhtml?faces-redirect=true";
+    }
+
+    public boolean ValidarCamposNulos() {
+        boolean bandera = false;
+        if (idTipoIdentificacion == 0) {
+            this.setError1("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError1("");
+        }
+        if (identificacion.equals("")) {
+            this.setError2("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError2("");
+        }
+        if (nombre.equals("")) {
+            this.setError3("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError3("");
+        }
+        if (pApellido.equals("")) {
+            this.setError4("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError4("");
+        }
+        if (sApellido.equals("")) {
+            this.setError5("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError5("");
+        }
+        if (contrasenna.equals("")) {
+            this.setError6("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError6("");
+        }
+        if (confcontrasenna.equals("")) {
+            this.setError7("Dato invalido");
+            bandera = true;
+        } else {
+            this.setError7("");
+        }
+        if (!confcontrasenna.equals(confcontrasenna)) {
+            this.setError8("Contraseñas diferentes");
+            bandera = true;
+        } else {
+            this.setError8("");
+        }
+        return bandera;
+                
+    }
 }

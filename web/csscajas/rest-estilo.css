@@ -1,0 +1,99 @@
+body {
+    font-family: Kalam-Regular;
+    font-size: 1.5em;
+    color: #0b3740;
+    width: 99%;
+}
+#imageinicio{
+	float: left;
+}
+
+.barraTitulo {
+    background-color: #004000;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+.barraMenu {
+    background-color: F2CD44;
+    height: 35px;
+    width: 98%;
+    padding: 1%;
+    height: 50px;
+    font-size: 1em;
+    line-height: 1%;
+}
+
+    .barraMenu ul {
+        list-style: none;
+    }
+
+        .barraMenu ul li a {
+            float: left;
+            padding: 0.2em;
+            margin: 3px;
+            color: black;
+            text-decoration: none;
+        }
+
+            .barraMenu ul li a:hover {
+                text-decoration: underline;
+                color: white;
+                background-color: #7a8089;
+            }
+
+h1 {
+    font-family: Kalam-Bold;
+    color: white;
+    margin-bottom: 0.24em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 1%;
+    
+}
+
+.cajaAreas {
+    float: left;
+    width: 20%;
+    height: 300px;
+    border-bottom: 3px;
+    border-color: F2CD44;
+    font-size: 18px;
+    margin-bottom: 5%;
+}
+
+    .cajaAreas figure img {
+        width: 150px;
+        width: 100%;
+        height: 150px;
+    }
+
+    .cajaAreas h1 {
+        color: white;
+        background-color: #F2CD44;
+        height: 4%;
+    }
+	
+footer {
+
+
+    height: 40px;
+    width: 98%;
+    margin-top: 10%;
+    padding: 5px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;
+}
+
+    footer h2 {
+        color: white;
+        text-align: center;
+		font-size: 24px;
+    }

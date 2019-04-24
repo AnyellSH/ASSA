@@ -1,0 +1,14 @@
+#animaciones{
+position:relative;
+    animation: moverIzqDer 5s infinite;
+}
+@keyframes moverIzqDer{
+    from{
+        left:10%;
+
+    }
+    to{
+        left:60%;
+
+    }
+}

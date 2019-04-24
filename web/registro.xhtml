@@ -4,31 +4,21 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:composition template="/WEB-INF/include/template2.xhtml">
         <ui:define name="head">
-            <title>ASSA Editar Usuario</title>
+            <title>ASSA Registro</title>
             <!-- Custom styles for this template -->
             <h:outputStylesheet name="css/starter-template.css"/>
+
         </ui:define>
         <ui:define name="body">
-             <br></br>
-        <div class="go-down" align="center">
-            <a href="#menu_area">
-                <img class="go-down-img" src="img/logoassa.png" alt=""></img>
-            </a>
-        </div>
-        <br></br>
-        <br></br>
-            <f:metadata>
-                <f:viewParam name="per" value="#{personaBean.per}"></f:viewParam>
-            </f:metadata>
             <br></br>
             <br></br>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <h:form enctype="multipart/form-data" id="personaEditar">
-                            <legend>Editar Usuario</legend>
+                        <h:form enctype="multipart/form-data">
+                            <legend>Registro Usuario</legend>
                             <div class="form-group row">
                                 <h:outputLabel for="tipoId" value="Tipo de Identificación:" class="col-sm-2 col-form-label"></h:outputLabel>
                                 <div class="col-sm-4">
@@ -37,50 +27,53 @@
                                                        itemLabel="#{tipo.descripcion}">
                                         </f:selectItems>
                                     </h:selectOneMenu>
+                                    <h:outputText value="#{personaBean.error1}" style="color: red"></h:outputText>
+
                                 </div>
                                 <h:outputLabel for="identificacion" value="Identificación:" class="col-sm-2 col-form-label"></h:outputLabel>
                                 <div class="col-sm-4">
-                                    <h:inputText value="#{personaBean.identificacion}" class="form-control" id="identificacion" ></h:inputText>
+                                    <h:inputText value="#{personaBean.identificacion}" class="form-control" id="identificacion" ></h:inputText>                                
+                                    <h:outputText value="#{personaBean.error2}" style="color: red"></h:outputText>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <h:outputLabel for="nombre" value="Nombre:" class="col-sm-2 col-form-label"></h:outputLabel>
                                 <div class="col-sm-4">
                                     <h:inputText value="#{personaBean.nombre}" class="form-control" id="nombre" ></h:inputText>
+                                    <h:outputText value="#{personaBean.error3}" style="color: red"></h:outputText>
                                 </div>
-                                <h:outputLabel for="idRol" value="Rol:" class="col-sm-2 col-form-label"></h:outputLabel>
-                                <div class="col-sm-4">
-                                    <h:selectOneMenu value="#{personaBean.idRol}" class="form-control" id="idRol" >
-                                        <f:selectItems value="#{personaBean.listaRoles}" var="rol" itemValue="#{rol.id}" 
-                                                       itemLabel="#{rol.descripcion}">
-                                        </f:selectItems>
-                                    </h:selectOneMenu>
-                                </div>
+
                             </div>
                             <div class="form-group row">
                                 <h:outputLabel for="pApellido" value="Primer Apellido:" class="col-sm-2 col-form-label"></h:outputLabel>
                                 <div class="col-sm-4">
                                     <h:inputText value="#{personaBean.pApellido}" class="form-control disabled" id="pApellido" ></h:inputText>
+                                    <h:outputText value="#{personaBean.error4}" style="color: red"></h:outputText>
                                 </div>
                                 <h:outputLabel for="sApellido" value="Segundo Apellido:" class="col-sm-2 col-form-label"></h:outputLabel>
                                 <div class="col-sm-4">
                                     <h:inputText value="#{personaBean.sApellido}" class="form-control" id="sApellido" ></h:inputText>
+                                    <h:outputText value="#{personaBean.error5}" style="color: red"></h:outputText>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row #{personaBean.hideButtons}">
                                 <h:outputLabel for="contrasenna" value="Contraseña:" class="col-sm-2 col-form-label"></h:outputLabel>
                                 <div class="col-sm-4">
-                                    <h:inputSecret value="#{personaBean.contrasenna}" class="form-control" id="contrasenna" ></h:inputSecret>
+                                    <h:inputSecret value="#{personaBean.contrasenna}" class="form-control #{personaBean.deshabilitarCampo}" id="contrasenna" ></h:inputSecret>
+                                    <h:outputText value="#{personaBean.error6}" style="color: red"></h:outputText>
                                 </div>
                                 <h:outputLabel for="confcontrasenna" value="Confirmar Contraseña" class="col-sm-2 col-form-label"></h:outputLabel>
                                 <div class="col-sm-4">
-                                    <h:inputSecret value="#{personaBean.contrasenna}" class="form-control" id="confcontrasenna" ></h:inputSecret>
+                                    <h:inputSecret value="#{personaBean.confcontrasenna}" class="form-control" id="confcontrasenna" ></h:inputSecret>
+                                    <h:outputText value="#{personaBean.error7}" style="color: red"></h:outputText>
+                                    <br></br>
+                                    <h:outputText value="#{personaBean.error8}" style="color: red"></h:outputText>
                                 </div>
                             </div>
-                            <div class="form-group-row">
+                            <div class="form-group-row #{personaBean.hideButtons}">
                                 <div class="col-sm-10">
-                                    <h:inputHidden value="#{personaBean.id}" id="id"></h:inputHidden>
-                                    <h:commandButton value="Actualizar" action="#{personaBean.actualizaDatos()}" class="btn btn-success col-sm-4"></h:commandButton>
+                                    <h:commandButton value="Agregar" action="#{personaBean.agregarPersona()}" class="btn btn-success col-sm-4" style="margin-right: 170px"></h:commandButton>
+                                    <h:commandButton value="Cancelar" action="#{personaBean.atras}" class="btn btn-warning col-sm-4" />
                                 </div>
                             </div>
                         </h:form>
@@ -111,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="form-group-row">
-                                <h:dataTable class="table table-hover table-striped" value="#{personaBean.getListaTablaTelefonosEdit(personaBean.id)}" var="tel">
+                                <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaTelefonos}" var="tel">
                                     <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Tipo"></h:outputText>
@@ -142,14 +135,14 @@
                             <div class="form-group row">
                                 <h:outputLabel for="correo" value="Correo:" class="col-sm-3 col-form-label"></h:outputLabel>
                                 <div class="col-sm-6">
-                                    <h:inputText value="#{personaBean.id}" class="form-control" id="correo"></h:inputText>
+                                    <h:inputText value="#{personaBean.correo}" class="form-control" id="correo"></h:inputText>
                                 </div>
                                 <div class="col-sm-3">
                                     <h:commandButton value="Agregar" action="#{personaBean.agregarCorreo()}" class="btn btn-success"></h:commandButton>
                                 </div>
                             </div>
                             <div class="form-group-row">
-                                <h:dataTable class="table table-hover table-striped" value="#{personaBean.getListaTablaCorreosEdit(personaBean.id)}" var="cor">
+                                <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaCorreos}" var="cor">
                                     <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Tipo"></h:outputText>
@@ -166,7 +159,7 @@
                             </div>
                             <div class="form-group-row">
                                 <div class="col-sm-10">
-                                    <h:button class="btn btn-warning col-sm-4" value="Regresar" outcome="usuarioMant"></h:button>
+                                    <h:commandButton value="Regresar" action="#{personaBean.cancelar}" class="btn btn-warning col-sm-4" />
                                 </div>
                             </div>
                         </h:form>
@@ -176,5 +169,4 @@
         </ui:define>
     </ui:composition>
 </html>
-
 

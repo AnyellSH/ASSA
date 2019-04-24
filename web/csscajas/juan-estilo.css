@@ -1,0 +1,122 @@
+body {
+    font-family: Kalam-Regular;
+    font-size: 1.5em;
+    color: #0b3740;
+    width: 99%;
+}
+#imageinicio{
+	float: left;
+}
+.barraTitulo {
+    background-color: #004000;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+.barraMenu {
+    
+    height: 35px;
+    width: 98%;
+    padding: 1%;
+    height: 50px;
+    font-size: 1em;
+    line-height: 1%;
+}
+
+    .barraMenu ul {
+        list-style: none;
+    }
+
+        .barraMenu ul li a {
+            float: left;
+            padding: 0.2em;
+            margin: 3px;
+            color: black;
+            text-decoration: none;
+        }
+
+            .barraMenu ul li a:hover {
+                text-decoration: underline;
+                color: white;
+                background-color: #7a8089;
+            }
+
+h1 {
+    font-family: Kalam-Bold;
+    color: white;
+    margin-bottom: 0.24em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 1%;
+   
+}
+dl {
+    padding: 0.2em;
+}
+
+dt {
+    float: left;
+    clear: left;
+    width: 20%;
+    text-align: right;
+    color:#004000;
+}
+
+    dt::after {
+        content: ":";
+        margin-right: 10px;
+    }
+
+dd {
+    margin-left: 110px;
+    padding-left: 0.5em;
+}
+
+.imagenes{
+    margin-bottom:25%;
+    font-size:16px;
+}
+    .imagenes figure img {
+        width: 150px;
+        height: 150px;
+        box-shadow: 28px 9px 9px rgba(0,0,0);
+         margin-bottom:5%;
+        
+    }
+
+#caja1 {
+    float: left;
+    width: 25%;
+}
+#caja2 {
+    float: left;
+    width: 65%;
+}
+
+p {
+    column-count: 3;
+}
+
+footer {
+
+    
+    height: 40px;
+    width: 98%;
+    margin-top: 10%;
+    padding: 5px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;
+}
+
+    footer h2 {
+        color: white;
+        text-align: center;
+		font-size: 24px;
+    }
