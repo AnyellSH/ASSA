@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>ASSA Agregar Usuario</title>
+        <!-- Custom styles for this template -->
+        <h:outputStylesheet name="css/starter-template.css"/>
+
+    </ui:define>
+    <ui:define name="body">
+        <br></br>
+        <br></br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <h:form enctype="multipart/form-data">
+                        <legend>Agregar Usuario</legend>
+                        <div class="form-group row">
+                            <h:outputLabel for="tipoId" value="Tipo de Identificación:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:selectOneMenu value="#{personaBean.idTipoIdentificacion}" class="form-control" id="tipoId">
+                                    <f:selectItems value="#{personaBean.listaTipoIdentificacion}" var="tipo" itemValue="#{tipo.id}" 
+                                                   itemLabel="#{tipo.descripcion}">
+                                    </f:selectItems>
+                                </h:selectOneMenu>
+                            </div>
+                            <h:outputLabel for="identificacion" value="Identificación:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:inputText value="#{personaBean.identificacion}" class="form-control" id="identificacion" ></h:inputText>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="nombre" value="Nombre:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:inputText value="#{personaBean.nombre}" class="form-control" id="nombre" ></h:inputText>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row">
+                            <h:outputLabel for="pApellido" value="Primer Apellido:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:inputText value="#{personaBean.pApellido}" class="form-control disabled" id="pApellido" ></h:inputText>
+                            </div>
+                            <h:outputLabel for="sApellido" value="Segundo Apellido:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:inputText value="#{personaBean.sApellido}" class="form-control" id="sApellido" ></h:inputText>
+                            </div>
+                        </div>
+                        <div class="form-group row #{personaBean.hideButtons}">
+                            <h:outputLabel for="contrasenna" value="Contraseña:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:inputSecret value="#{personaBean.contrasenna}" class="form-control #{personaBean.deshabilitarCampo}" id="contrasenna" ></h:inputSecret>
+                            </div>
+                            <h:outputLabel for="confcontrasenna" value="Confirmar Contraseña" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:inputSecret value="#{personaBean.confcontrasenna}" class="form-control" id="confcontrasenna" ></h:inputSecret>
+                            </div>
+                        </div>
+                        <div class="form-group-row #{personaBean.hideButtons}">
+                            <div class="col-sm-10">
+                                <h:commandButton value="Agregar" action="#{personaBean.agregarPersona()}" class="btn btn-success col-sm-4"></h:commandButton>
+                                <h:commandButton value="Cancelar" action="#{personaBean.cancelar}" class="btn btn-warning col-sm-4" />
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <br></br>
+            <br></br>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <h:form enctype="multipart/form-data" class="#{personaBean.cssClass}" id="telefonos">
+                        <legend>Información de Contacto</legend>
+                        <legend>Teléfono(s)</legend>
+                        <div class="form-group row">
+                            <h:outputLabel for="tipoTelId" value="Tipo:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-2">
+                                <h:selectOneMenu value="#{personaBean.idTipoTelefono}" class="form-control" id="tipoTelId">
+                                    <f:selectItems value="#{personaBean.tiposTelefono}" var="tipoTel" itemValue="#{tipoTel.id}" 
+                                                   itemLabel="#{tipoTel.descripcion}">
+                                    </f:selectItems>
+                                </h:selectOneMenu>
+                            </div>
+                            <h:outputLabel for="numeroTel" value="Número:" class="col-sm-2 col-form-label"></h:outputLabel>
+                            <div class="col-sm-3">
+                                <h:inputText value="#{personaBean.numeroTel}" class="form-control" id="numeroTel"></h:inputText>
+                            </div>
+                            <div class="col-sm-3">
+                                <h:commandButton value="Agregar" action="#{personaBean.agregarTelefono()}" class="btn btn-success"></h:commandButton>
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaTelefonos}" var="tel">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipo"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{personaBean.getTipoTelefono(tel.idTipoTelefono)}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Número"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{tel.numero}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Eliminar"></h:outputText>
+                                    </f:facet>
+                                    <h:commandLink value="Eliminar" action="#{personaBean.eliminarTelefono(tel)}"></h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <h:form enctype="multipart/form-data" class="#{personaBean.cssClass}" id="correos">
+                        <legend>Correo(s)</legend>
+                        <div class="form-group row">
+                            <h:outputLabel for="correo" value="Correo:" class="col-sm-3 col-form-label"></h:outputLabel>
+                            <div class="col-sm-6">
+                                <h:inputText value="#{personaBean.correo}" class="form-control" id="correo"></h:inputText>
+                            </div>
+                            <div class="col-sm-3">
+                                <h:commandButton value="Agregar" action="#{personaBean.agregarCorreo()}" class="btn btn-success"></h:commandButton>
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaCorreos}" var="cor">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipo"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText value="#{cor.correo}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Eliminar"></h:outputText>
+                                    </f:facet>
+                                    <h:commandLink value="Eliminar" action="#{personaBean.eliminarCorreo(cor)}"></h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="col-sm-10">
+                                <h:commandButton value="Regresar" action="#{personaBean.cancelar}" class="btn btn-warning col-sm-4" />
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+  </ui:composition>
+</html>
+

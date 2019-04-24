@@ -569,7 +569,8 @@ public class PersonaBean implements Serializable {
 
     public String agregarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         
-        Estado = 0;
+        Estado = 0; 
+        this.setIdRol(3);
         Persona obj = new Persona(this.getId(),this.getIdTipoIdentificacion(), this.getIdentificacion(), this.getNombre(), this.getpApellido(), this.getsApellido(),
                 this.getContrasenna(), this.getIdRol(), this.getEstado(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
 

@@ -97,18 +97,21 @@
                 <div align="center">
                     <label> <h3>Usuario</h3></label>
                     <br></br>
-                    <h:inputText size="75" value="#{loginBean.usuario}"></h:inputText>
+                    <h:inputText size="75" value="#{loginBean.usuario}" class="form-control"></h:inputText>
                     <br></br>
 
 
                     <label> <h3>Contraseña</h3></label>
                     <br></br>
-                    <h:inputSecret size="75" value="#{loginBean.contrasena}"></h:inputSecret>
-
+                    <h:inputSecret size="75" value="#{loginBean.contrasena}" class="form-control"></h:inputSecret>
+                    <h:outputLabel value="#{loginBean.errorUsuario}" style="color: red"></h:outputLabel>
+                    
+                    <br></br>
                     <div class="">
                         <br></br>
                         <h:commandButton class="primary-btn mt-30 text-uppercase" value="Iniciar Sesion" action="#{loginBean.Validar()}"></h:commandButton>
                         <br></br>
+
                         <a href="registro.xhtml">Crear cuenta</a>
                     </div>
                 </div>
@@ -121,57 +124,57 @@
         <!--======cajas registro fin =======-->
 
 
-     <!--  ============= Start Footer Area =================-->
-	<footer class="footer-area section-gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2 col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h4>Top Products</h4>
-						<ul>
-							<li><a href="#">Entradas</a></li>
-							<li><a href="#">Guarniciones</a></li>
-							<li><a href="#">Platos fuertes</a></li>
-							<li><a href="#">Postres</a></li>
-						</ul>
-					</div>
-				</div>
-				
-			
-				
-				<div class="col-lg-4  col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h4>Contactenos</h4>
-						<p></p>
-						<div class="" id="mc_embed_signup">
-							<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-							 method="get">
-								<div class="input-group">
-									
-									<div class="input-group-btn">
-										<button class="btn btn-default" type="submit">
-											<span class="lnr lnr-arrow-right"></span>
-										</button>
-									</div>
-									<div class="info"></div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="footer-bottom row align-items-center justify-content-between">
-				<p class="footer-text m-0 col-lg-6 col-md-12">Copyright © 2019 Alimentos Preparados del sur S.A
-					<span class="lnr lnr-heart"></span> by <a href="#">Anyel Sanabria y Pablo Mora</a></p>
-				<div class="col-lg-6 col-sm-12 footer-social">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-dribbble"></i></a>
-					<a href="#"><i class="fa fa-behance"></i></a>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!--================ End Footer Area =================-->
+        <!--  ============= Start Footer Area =================-->
+        <footer class="footer-area section-gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Top Products</h4>
+                            <ul>
+                                <li><a href="#">Entradas</a></li>
+                                <li><a href="#">Guarniciones</a></li>
+                                <li><a href="#">Platos fuertes</a></li>
+                                <li><a href="#">Postres</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4  col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Contactenos</h4>
+                            <p></p>
+                            <div class="" id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                      method="get">
+                                    <div class="input-group">
+
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="submit">
+                                                <span class="lnr lnr-arrow-right"></span>
+                                            </button>
+                                        </div>
+                                        <div class="info"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom row align-items-center justify-content-between">
+                    <p class="footer-text m-0 col-lg-6 col-md-12">Copyright © 2019 Alimentos Preparados del sur S.A
+                        <span class="lnr lnr-heart"></span> by <a href="#">Anyel Sanabria y Pablo Mora</a></p>
+                    <div class="col-lg-6 col-sm-12 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--================ End Footer Area =================-->
     </h:body>
 </html>
