@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/include/template.xhtml">
+        <ui:define name="head">
+            <title>Direcciones Entrega</title>
+            <!-- Custom styles for this template -->
+            <h:outputStylesheet name="css/starter-template.css"/>
+
+        </ui:define>
+        <ui:define name="body">
+            <f:metadata>
+                <f:viewParam name="per" value="#{direccionBean.per}"></f:viewParam>
+                <f:event type="preRenderView" listener="#{direccionBean.cargarPagina()}"></f:event>
+            </f:metadata>
+            <!-- COMIENZA SEC SOLICITUDES -->
+            <section id="abt_sec">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
+                            <div class="title_sec">
+                                <h1>Direcciones de #{direccionBean.per.nombre} #{direccionBean.per.getpApellido()} </h1>
+                            </div>
+                            <div class="row ">
+                                <div class="col-sm-12">
+                                    <h:form enctype="multipart/form-data">
+                                        <legend>Agregar Dirección</legend>
+                                        <div class="form-group row">
+                                            <h:outputLabel for="tipoId" value="Tipo:" class="col-sm-1 col-form-label"></h:outputLabel>
+                                            <div class="col-sm-2">
+                                                <h:selectOneMenu value="#{direccionBean.listaTipos}" class="form-control" id="tipoId">
+                                                    <f:selectItems value="#{direccionBean.listaTipos}" var="tipo" itemValue="#{tipo.id}" 
+                                                                   itemLabel="#{tipo.descripcion}">
+                                                    </f:selectItems>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <h:outputLabel for="horarios" value="Horarios de Entrega:" class="col-sm-2 col-form-label"></h:outputLabel>
+                                            <div class="col-sm-5">
+                                                <h:inputText value="#{direccionBean.horarios}" class="form-control" id="horarios" ></h:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <h:outputLabel for="idProvincia" value="Provincia:" class="col-sm-1 col-form-label"></h:outputLabel>
+                                            <div class="col-sm-4">
+                                                <h:selectOneMenu value="#{direccionBean.idProvincia}" class="form-control" id="idProvincia" 
+                                                                 onchange="submit()"
+                                                                 valueChangeListener="#{direccionBean.cargarComboCanton()}">
+                                                    <f:selectItems value="#{direccionBean.listaProvincias}" var="prov" itemValue="#{prov.COD_PROVINCIA}" 
+                                                                   itemLabel="#{prov.DSC_PROVINCIA}">
+                                                    </f:selectItems>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <h:outputLabel for="idCanton" value="Cantón:" class="col-sm-1 col-form-label"></h:outputLabel>
+                                            <div class="col-sm-4">
+                                                <h:selectOneMenu value="#{direccionBean.idCanton}" class="form-control" id="idCanton">
+                                                    <f:selectItems value="#{direccionBean.listaCantones}" var="can" itemValue="#{can.COD_CANTON}" 
+                                                                   itemLabel="#{can.DSC_CANTON}">
+                                                    </f:selectItems>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <h:outputLabel for="idDistrito" value="Distrito:" class="col-sm-1 col-form-label"></h:outputLabel>
+                                            <div class="col-sm-4">
+                                                <h:selectOneMenu value="#{direccionBean.idDistrito}" class="form-control" id="idDistrito">
+                                                    <f:selectItems value="#{direccionBean.listaDistritos}" var="dis" itemValue="#{dis.COD_DISTRITO}" 
+                                                                   itemLabel="#{dis.DSC_DISTRITO}">
+                                                    </f:selectItems>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <h:outputLabel for="idBarrio" value="Barrio:" class="col-sm-1 col-form-label"></h:outputLabel>
+                                            <div class="col-sm-4">
+                                                <h:selectOneMenu value="#{direccionBean.idBarrio}" class="form-control" id="idBarrio" 
+                                                                 onchange="submit()"><!-- 
+                                                                 valueChangeListener="">-->
+                                                    <f:selectItems value="#{direccionBean.listaBarrios}" var="bar" itemValue="#{bar.COD_BARRIO}" 
+                                                                   itemLabel="#{bar.DSC_BARRIO}">
+                                                    </f:selectItems>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <h:outputLabel for="otrasSennas" value="Otras Señas:" class="col-sm-1 col-form-label"></h:outputLabel>
+                                            <div class="col-sm-9">
+                                                <h:inputTextarea rows="3" class="form-control" id="otrasSennas"></h:inputTextarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <h:commandButton class="btn btn-primary col-sm-2" value="Agregar" action="#{direccionBean.ocultarFormulario()}"></h:commandButton>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>        
+                        </div>				
+                    </div>
+                </div>
+            </section>
+            <!-- TERMINA SEC SOLICITUDES -->
+
+        </ui:define>
+    </ui:composition>
+</html>

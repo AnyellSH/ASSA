@@ -15,29 +15,62 @@ public class Direccion {
 
     public int id;
     public String otrasSennas;
+    public String horarios;
     public int estado;
     public int idUsuRegistra;
-    public Date feRegistra;
+    public String feRegistra;
     public int idUsuEdita;
-    public Date feEdita;
-    public int idBarrio;
+    public String feEdita;
     public int idTipoDirreccion;
+    public int idProvincia;
+    public int idCanton;
+    public int idDistrito;
+    public int idBarrio;
 
     public Direccion() {
     }
 
-    public Direccion(int id, String otrasSennas, int estado, int idUsuRegistra, Date feRegistra, int idUsuEdita, Date feEdita, int idBarrio, int idTipoDirreccion) {
+    public Direccion(int id, String otrasSennas, String horarios, int estado, int idUsuRegistra, String feRegistra, 
+            int idUsuEdita, String feEdita, int idTipoDirreccion, int idProvincia, int idCanton, int idDistrito, int idBarrio) {
         this.id = id;
         this.otrasSennas = otrasSennas;
+        this.horarios = horarios;
         this.estado = estado;
         this.idUsuRegistra = idUsuRegistra;
         this.feRegistra = feRegistra;
         this.idUsuEdita = idUsuEdita;
         this.feEdita = feEdita;
-        this.idBarrio = idBarrio;
         this.idTipoDirreccion = idTipoDirreccion;
+        this.idProvincia = idProvincia;
+        this.idCanton = idCanton;
+        this.idDistrito = idDistrito;
+        this.idBarrio = idBarrio;
+    }
+    
+    public Direccion(String otrasSennas, String horarios, int estado, int idUsuRegistra, String feRegistra, 
+            int idUsuEdita, String feEdita, int idTipoDirreccion, int idProvincia, int idCanton, int idDistrito, int idBarrio) {
+        this.otrasSennas = otrasSennas;
+        this.horarios = horarios;
+        this.estado = estado;
+        this.idUsuRegistra = idUsuRegistra;
+        this.feRegistra = feRegistra;
+        this.idUsuEdita = idUsuEdita;
+        this.feEdita = feEdita;
+        this.idTipoDirreccion = idTipoDirreccion;
+        this.idProvincia = idProvincia;
+        this.idCanton = idCanton;
+        this.idDistrito = idDistrito;
+        this.idBarrio = idBarrio;
     }
 
+    public String getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(String horarios) {
+        this.horarios = horarios;
+    }
+    
     public int getId() {
         return id;
     }
@@ -70,11 +103,11 @@ public class Direccion {
         this.idUsuRegistra = idUsuRegistra;
     }
 
-    public Date getFeRegistra() {
+    public String getFeRegistra() {
         return feRegistra;
     }
 
-    public void setFeRegistra(Date feRegistra) {
+    public void setFeRegistra(String feRegistra) {
         this.feRegistra = feRegistra;
     }
 
@@ -86,11 +119,11 @@ public class Direccion {
         this.idUsuEdita = idUsuEdita;
     }
 
-    public Date getFeEdita() {
+    public String getFeEdita() {
         return feEdita;
     }
 
-    public void setFeEdita(Date feEdita) {
+    public void setFeEdita(String feEdita) {
         this.feEdita = feEdita;
     }
 
@@ -109,5 +142,30 @@ public class Direccion {
     public void setIdTipoDirreccion(int idTipoDirreccion) {
         this.idTipoDirreccion = idTipoDirreccion;
     }
+
+    public int getIdProvincia() {
+        return idProvincia;
+    }
+
+    public void setIdProvincia(int idProvincia) {
+        this.idProvincia = idProvincia;
+    }
+
+    public int getIdCanton() {
+        return idCanton;
+    }
+
+    public void setIdCanton(int idCanton) {
+        this.idCanton = idCanton;
+    }
+
+    public int getIdDistrito() {
+        return idDistrito;
+    }
+
+    public void setIdDistrito(int idDistrito) {
+        this.idDistrito = idDistrito;
+    }
+    
     
 }

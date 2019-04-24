@@ -663,6 +663,11 @@ public class PersonaBean implements Serializable {
         return "usuarioRegistro.xhtml?faces-redirect=true";
     }
     
+    public String verDirecciones(Persona per){
+        this.setPer(per);
+        return "direccionMant.xhtml?faces-redirect=true&includeViewParams=true";
+    }
+    
     public String cancelar(){
         return "usuarioMant.xhtml?faces-redirect=true";
     }

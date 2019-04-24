@@ -4,68 +4,64 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-  <ui:composition template="/WEB-INF/include/template.xhtml">
-    <ui:define name="head">
-        <title>Direcciones Entrega</title>
-        <!-- Custom styles for this template -->
-        <h:outputStylesheet name="css/starter-template.css"/>
-
-    </ui:define>
-    <ui:define name="body">
-           
-        <!-- COMIENZA SEC SOLICITUDES -->
-        <section id="abt_sec">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
-                        <div class="title_sec">
-                            <h1>Usuarios</h1>
-                        </div>
-                        <h:form enctype="multipart/form-data">
-                        <div class="datagrid">
-                            <h:commandButton class="btn btn-primary col-sm-2" value="Agregar Direccion" action="#{personaBean.irARegistro()}"></h:commandButton>
-                            <h:button class="btn btn-warning col-sm-2" value="Regresar" outcome="usuarioMant"></h:button>
-                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaPersonas}" var="per" style="text-align: center">
-                                <h:column class="text-success">
-                                    <f:facet name="header">
-                                        <h:outputText value="Cédula"></h:outputText>
-                                    </f:facet>
-                                    <h:outputText value="#{per.identificacion}"></h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nombre"></h:outputText>
-                                    </f:facet>
-                                    <h:outputText value="#{per.nombre} #{per.pApellido}"></h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Rol"></h:outputText>
-                                    </f:facet>
-                                    <h:outputText value="#{personaBean.getRolPersona(per.idRol)}"></h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Editar" ></h:outputText>
-                                    </f:facet>
-                                    <h:commandButton value="Editar" class="btn btn-link" style="text-align: center" action="#{personaBean.verPersona(per)}"></h:commandButton>
-                                </h:column>
-                                <h:column >
-                                    <f:facet name="header">
-                                        <h:outputText value="Eliminar"></h:outputText>
-                                    </f:facet>
-                                    <h:commandButton value="Eliminar" class="btn btn-link" action="#{productosBean.eliminarProducto(producc)}" ></h:commandButton>
-                                </h:column>
-                            </h:dataTable>
-                        </div>                        
-                          
-                        </h:form>
-                    </div>				
-                </div>
-            </div>
-        </section>
-        <!-- TERMINA SEC SOLICITUDES -->
+    <ui:composition template="/WEB-INF/include/template.xhtml">
+        <ui:define name="head">
+            <title>Direcciones Entrega</title>
+            <!-- Custom styles for this template -->
+            <h:outputStylesheet name="css/starter-template.css"/>
 
         </ui:define>
-  </ui:composition>
+        <ui:define name="body">
+            <f:metadata>
+                <f:viewParam name="per" value="#{direccionBean.per}"></f:viewParam>
+                <f:event type="preRenderView" listener="#{direccionBean.cargarPagina()}"></f:event>
+            </f:metadata>
+            <!-- COMIENZA SEC SOLICITUDES -->
+            <section id="abt_sec">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
+                            <div class="title_sec">
+                                <h1>Direcciones de #{personaBean.per.nombre} #{personaBean.per.getpApellido()} </h1>
+                            </div>
+                            <div class="datagrid">
+                                <h:form enctype="multipart/form-data">
+                                    <h:commandButton class="btn btn-primary col-sm-2" value="Agregar Dirección" action="#{direccionBean.irARegistroDireccion(personaBean.per)}"></h:commandButton>
+                                    <h:button class="btn btn-warning col-sm-2" value="Regresar" outcome="usuarioMant"></h:button>
+                                    <h:dataTable class="table table-hover table-striped" value="#{direccionBean.getListaDirecciones(personaBean.per.id)}" var="dir" style="text-align: center">
+                                        <h:column class="text-success">
+                                            <f:facet name="header">
+                                                <h:outputText value="Tipo"></h:outputText>
+                                            </f:facet>
+                                            <h:outputText value="#{dir.idTipoDirreccion}"></h:outputText>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre"></h:outputText>
+                                            </f:facet>
+                                            <h:outputText value="#{dir.otrasSennas}"></h:outputText>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Editar" ></h:outputText>
+                                            </f:facet>
+                                            <h:commandButton value="Editar" class="btn btn-link" style="text-align: center" action="#{personaBean.verPersona(per)}"></h:commandButton>
+                                        </h:column>
+                                        <h:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Eliminar"></h:outputText>
+                                            </f:facet>
+                                            <h:commandButton value="Eliminar" class="btn btn-link" action="#{productosBean.eliminarProducto(producc)}" ></h:commandButton>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:form>
+                            </div>                        
+                        </div>				
+                    </div>
+                </div>
+            </section>
+            <!-- TERMINA SEC SOLICITUDES -->
+
+        </ui:define>
+    </ui:composition>
 </html>

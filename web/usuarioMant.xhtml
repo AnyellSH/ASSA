@@ -46,6 +46,12 @@
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
+                                        <h:outputText value="Direcciones" ></h:outputText>
+                                    </f:facet>
+                                    <h:commandButton value="Direcciones" class="btn btn-link" style="text-align: center" action="#{personaBean.verDirecciones(per)}"></h:commandButton>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
                                         <h:outputText value="Editar" ></h:outputText>
                                     </f:facet>
                                     <h:commandButton value="Editar" class="btn btn-link" style="text-align: center" action="#{personaBean.verPersona(per)}"></h:commandButton>
