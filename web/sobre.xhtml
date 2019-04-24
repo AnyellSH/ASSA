@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+     
     <h:head>
 
         <!-- Mobile Specific Meta -->
@@ -20,7 +20,7 @@
         <!-- meta character set -->
         <meta charset="UTF-8"></meta>
         <!-- Site Title -->
-        <title>Inicio Sesion</title>
+        <title>ASSA</title>
 
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Roboto:400,500" rel="stylesheet"></link>
         <!--CSS============================================= -->
@@ -41,9 +41,10 @@
                 <div class="header-wrap">
                     <div class="header-top d-flex justify-content-between align-items-center navbar-expand-md">
                         <div class="col menu-left">
-                            <a class="active" href="index.xhtml">Inicio</a>
-                            <a href="menu.html">Productos</a>
-                            <a href="about.xhtml">¿Quienes somos?</a>
+                            <h:link class="active" outcome="mantenimientos">Inicio</h:link>
+                            <!--<a class="active" href="faces/mantenimientos.xhtml">Inicio</a>-->
+                            <a href="faces/productos.xhtml">Productos</a>
+                            <a href="about.html">¿Quienes somos?</a>
                         </div>
                         <div class="col-3 logo">
                             <a href="index.html"><img class="mx-auto" src="img/logoassa.png" alt=""></img></a>
@@ -65,9 +66,9 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="gallery.html">Iniciar Sesion</a>
+                                        <a class="nav-link" href="iniciarSesion.xhtml">Iniciar Sesion</a>
                                     </li>
-
+                                    
                                 </ul>
                             </div>
                         </nav>
@@ -75,56 +76,40 @@
                 </div>
             </div>
         </header>
-
-
-        <!--================ Left Right And Banner Icon =================-->
-        <!--================ Left Right And Banner Icon =================-->
-        <div class="go-down">
-            <a href="#menu_area">
-                <img class="" src="img/logoassa.png" alt=""></img>
-            </a>
-        </div>
-
-
-        <!--================ Left Right And Banner Icon =================-->
-
-        <!--======cajas registro=======-->
-        <section class="contact-area section-gap" >
-
-
-
-            <h:form>
-                <div align="center">
-                    <label> <h3>Usuario</h3></label>
-                    <br></br>
-                    <h:inputText size="75" value="#{loginBean.usuario}" class="form-control"></h:inputText>
-                    <br></br>
-
-
-                    <label> <h3>Contraseña</h3></label>
-                    <br></br>
-                    <h:inputSecret size="75" value="#{loginBean.contrasena}" class="form-control"></h:inputSecret>
-                    <h:outputLabel value="#{loginBean.errorUsuario}" style="color: red"></h:outputLabel>
-                    
-                    <br></br>
-                    <div class="">
-                        <br></br>
-                        <h:commandButton class="primary-btn mt-30 text-uppercase" value="Iniciar Sesion" action="#{loginBean.Validar()}"></h:commandButton>
-                        <br></br>
-
-                        <a href="registro.xhtml">Crear cuenta</a>
-                    </div>
-                </div>
-
-            </h:form>
-
-
-
-        </section>
-        <!--======cajas registro fin =======-->
-
-
-        <!--  ============= Start Footer Area =================-->
+        
+        
+        
+        
+        
+        <!--================ About Area =================-->
+	<section class="about-area section-gap-top">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-6">
+					<div class="">
+                                            <img class="img-fluid" src="imgcaj/3leches.jpg" alt=""></img>
+					</div>
+				</div>
+				<div class="offset-lg-1 col-lg-5 col-md-6">
+					<div class="section-title relative">
+						<h1>
+                                                    Sobre <br></br>
+                                                    ASSA <br></br>
+							Alimentos preparados del sur
+						</h1>
+						<p>
+							Somos una empresa dedicada a la maquila, produccion y diseño de alimentos preparados para restaurantes, bares, hoteles y comercios del sector
+                                                        alimenticio en general. Nos preocupamos por el bienestar de las personas que creen en nosotros para la prosperidad de sus negocios brindando una
+                                                        variedad de sabores y experiencias gastronomicas de alta calidad.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End About Area =================-->
+        
+        <!--================ Start Footer Area =================-->
         <footer class="footer-area section-gap">
             <div class="container">
                 <div class="row">
@@ -176,5 +161,6 @@
             </div>
         </footer>
         <!--================ End Footer Area =================-->
+
     </h:body>
 </html>
