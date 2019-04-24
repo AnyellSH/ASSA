@@ -149,10 +149,24 @@ public class LoginBean implements Serializable {
         if (encontrado) {
 //            otraLista = persona.SelecionarRolles_Por_Persona(idpersona);
 
-            pagina = "mantenimientos.xhtml";
-            autenticar();
-            this.setUsuarioLogueado(obj.getNombre());
-            this.consultarSesion();
+            if (obj.idRol == 1) {
+                pagina = "mantenimientos.xhtml";
+                autenticar();
+                this.setUsuarioLogueado(obj.getNombre());
+                this.consultarSesion();
+            }
+            if (obj.idRol == 2) {
+                pagina = "mantenimientos.xhtml";
+                autenticar();
+                this.setUsuarioLogueado(obj.getNombre());
+                this.consultarSesion();
+            }
+            if (obj.idRol == 3) {
+                pagina = "productos.xhtml";
+                autenticar();
+                this.setUsuarioLogueado(obj.getNombre());
+                this.consultarSesion();
+            }
 
         } else {
             this.setErrorUsuario("Datos incorectos");
