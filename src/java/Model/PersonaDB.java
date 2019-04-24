@@ -68,7 +68,7 @@ public class PersonaDB {
                     + "Contrasenna,ID_ROL,Estado,"
                     + "Id_Usu_Registra, Fecha_Registra,"
                     + "Id_Usu_Edita,Fecha_Edita "
-                    + "from dbo.Persona";
+                    + "from dbo.Persona where Estado = 1";
 
             //Se ejecuta la sentencia SQL
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
@@ -111,6 +111,65 @@ public class PersonaDB {
         return lista;
     }
 
+    public LinkedList<Persona> SeleccionaTodosDesactivados() throws SNMPExceptions, SQLException {
+        String select = "";
+
+        LinkedList<Persona> lista = new LinkedList<Persona>();
+
+        try {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            //Se instancia la clase de acceso a datos
+//            AccesoDatos accesoDatos = new AccesoDatos();
+
+            //Se crea la sentencia de búsqueda
+            select = "SELECT Id,ID_TIPO_IDENTIFICACION,Identificacion,"
+                    + "Nombre,P_Apellido,S_Apellido,"
+                    + "Contrasenna,ID_ROL,Estado,"
+                    + "Id_Usu_Registra, Fecha_Registra,"
+                    + "Id_Usu_Edita,Fecha_Edita "
+                    + "from dbo.Persona where Estado = 0";
+
+            //Se ejecuta la sentencia SQL
+            ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
+            //Se llena el arryaList con los catálogos   
+            while (rsPA.next()) {
+
+                int idPro = rsPA.getInt("Id");
+                int idTipoIdentificacion = rsPA.getInt("ID_TIPO_IDENTIFICACION");
+                String identificacion = rsPA.getString("Identificacion");
+                String nombre = rsPA.getString("Nombre");
+                String p_Apellido = rsPA.getString("P_Apellido");
+                String s_Apellido = rsPA.getString("S_Apellido");
+                String contrasenna = rsPA.getString("Contrasenna");
+                int idRol = rsPA.getInt("ID_ROL");
+                int estado = rsPA.getInt("Estado");
+                int usuarioI = rsPA.getInt("Id_Usu_Registra");
+                String fechaI = rsPA.getString("Fecha_Registra");
+                int usuarioM = rsPA.getInt("Id_Usu_Edita");
+                String fechaM = rsPA.getString("Fecha_Edita");
+
+                Persona per = new Persona(idPro, idTipoIdentificacion, identificacion,
+                        nombre, p_Apellido, s_Apellido, contrasenna, idRol, estado,
+                        usuarioI, fechaI, usuarioM, fechaM);
+
+                lista.add(per);
+
+            }
+            rsPA.close();
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION,
+                    e.getMessage());
+        } finally {
+
+        }
+
+        return lista;
+    }
+    
     public Persona SeleccionarUno(int idPersona) throws SNMPExceptions, SQLException {
 
         String select = "";

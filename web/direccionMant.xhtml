@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
   <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
-        <title>ASSA Usuarios</title>
+        <title>Direcciones Entrega</title>
         <!-- Custom styles for this template -->
         <h:outputStylesheet name="css/starter-template.css"/>
 
@@ -23,8 +23,9 @@
                         </div>
                         <h:form enctype="multipart/form-data">
                         <div class="datagrid">
+                            <h:commandButton class="btn btn-primary col-sm-2" value="Agregar Direccion" action="#{personaBean.irARegistro()}"></h:commandButton>
                             <h:button class="btn btn-warning col-sm-2" value="Regresar" outcome="usuarioMant"></h:button>
-                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaPersonasDesactivados}" var="per" style="text-align: center">
+                            <h:dataTable class="table table-hover table-striped" value="#{personaBean.listaTablaPersonas}" var="per" style="text-align: center">
                                 <h:column class="text-success">
                                     <f:facet name="header">
                                         <h:outputText value="Cédula"></h:outputText>
@@ -47,7 +48,7 @@
                                     <f:facet name="header">
                                         <h:outputText value="Editar" ></h:outputText>
                                     </f:facet>
-                                    <h:commandButton value="Aprobar" class="btn btn-link" style="text-align: center" action="#{personaBean.verPersona(per)}"></h:commandButton>
+                                    <h:commandButton value="Editar" class="btn btn-link" style="text-align: center" action="#{personaBean.verPersona(per)}"></h:commandButton>
                                 </h:column>
                                 <h:column >
                                     <f:facet name="header">

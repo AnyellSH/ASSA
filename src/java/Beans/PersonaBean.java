@@ -329,8 +329,15 @@ public class PersonaBean implements Serializable {
         this.listaTipoIdentificacion = listaTipoIdentificacion;
     }
 
-    public LinkedList<Persona> getListaTablaPersonasDesactivados() {
-        return listaTablaPersonasDesactivados;
+    public LinkedList<Persona> getListaTablaPersonasDesactivados() throws SNMPExceptions, SQLException {
+        LinkedList<Persona> lista = new LinkedList<Persona>();
+        PersonaDB sDB = new PersonaDB();
+
+        lista = sDB.SeleccionaTodosDesactivados();
+
+        LinkedList resultlista = new LinkedList();
+        resultlista = lista;
+        return resultlista;
     }
 
     public void setListaTablaPersonasDesactivados(LinkedList<Persona> listaTablaPersonasDesactivados) {
