@@ -604,7 +604,7 @@ public class PersonaBean implements Serializable {
 
     public void eliminarPersona(Persona obj) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         PersonaDB pDB = new PersonaDB();
-        pDB.Desactivar(obj.id, obj.estado);
+        pDB.Desactivar(obj.id);
 
         this.getListaTablaPersonas();
         this.getListaTablaPersonasDesactivados();
@@ -612,7 +612,7 @@ public class PersonaBean implements Serializable {
 
     public String activarPesona(int idp) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         PersonaDB pDB = new PersonaDB();
-        pDB.Desactivar(obj.id, obj.estado);
+        pDB.Desactivar(idp);
 
         return "/usuarioMant.xhtml?faces-redirect=true";
     }
@@ -832,5 +832,10 @@ public class PersonaBean implements Serializable {
         }
         return bandera;
                 
+    }
+    
+    public void Aprobar(int id) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException{
+        PersonaDB persona = new PersonaDB();
+        persona.Aprovar(id);
     }
 }

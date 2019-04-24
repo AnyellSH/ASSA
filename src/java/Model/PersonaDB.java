@@ -237,9 +237,14 @@ public class PersonaDB {
         return id;
     }
 
-    public void Desactivar(int idPer, int estp) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+    public void Desactivar(int idPer) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
         String desactivar = "";
-        desactivar = "UPDATE Persona SET Estado=" + estp + " Where id = " + idPer;
+        desactivar = "UPDATE Persona SET Estado=" + 0 + " Where id = " + idPer;
+        accesoDatos.ejecutaSQL(desactivar);
+    }
+     public void Aprovar(int idPer) throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
+        String desactivar = "";
+        desactivar = "UPDATE Persona SET Estado= " + 1 + " Where id = " + idPer;
         accesoDatos.ejecutaSQL(desactivar);
     }
 
