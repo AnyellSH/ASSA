@@ -10,11 +10,12 @@ import Model.Persona;
 import Model.PersonaDB;
 import Model.Rol;
 import Model.RolDB;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Map;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -23,8 +24,8 @@ import javax.faces.context.FacesContext;
  * @author Pablo Mora
  */
 @Named(value = "loginBean")
-@Dependent
-public class LoginBean {
+@SessionScoped
+public class LoginBean implements Serializable {
 
     String identificacion;
     String contrasena;
@@ -148,14 +149,15 @@ public class LoginBean {
         if (encontrado) {
 //            otraLista = persona.SelecionarRolles_Por_Persona(idpersona);
 
-            pagina = "Menu.xhtml";
+            pagina = "mantenimientos.xhtml";
             autenticar();
+            this.setUsuarioLogueado(obj.getNombre());
+            this.consultarSesion();
 
         } else {
             this.setErrorUsuario("Datos incorectos");
         }
 
-        this.consultarSesion();
 //        return pagina;
     }
 
@@ -163,8 +165,11 @@ public class LoginBean {
         try {
 
             if (obj != null) {
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Usuario", obj);
                 FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
+
+                this.setUsuarioLogueado(obj.nombre);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("obj", obj);
+
             }
         } catch (Exception e) {
             e.toString();
@@ -172,11 +177,11 @@ public class LoginBean {
     }
 
     public void consultarSesion() throws SNMPExceptions, SQLException {
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("Usuario");
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("obj");
 
         final ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         final Map<String, Object> session = context.getSessionMap();
-        final Persona user = (Persona) session.get("Usuario");
+        final Persona user = (Persona) session.get("obj");
 
         if (user != null) {
             try {

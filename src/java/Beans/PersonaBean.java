@@ -109,7 +109,7 @@ public class PersonaBean implements Serializable {
     public void setListaTablaCorreosEdit(LinkedList<Correo> listaTablaCorreosEdit) {
         this.listaTablaCorreosEdit = listaTablaCorreosEdit;
     }
-    
+
     public Persona getPer() {
         return per;
     }
@@ -117,14 +117,14 @@ public class PersonaBean implements Serializable {
     public void setPer(Persona per) {
         this.per = per;
     }
-    
+
     public String getRolPersona(int id) {
         String rol = "";
-        if(id == 1){
+        if (id == 1) {
             rol = "Administrador";
-        } else if (id == 2){
+        } else if (id == 2) {
             rol = "Empleado";
-        } else if (id == 3){
+        } else if (id == 3) {
             rol = "Cliente";
         }
         return rol;
@@ -134,7 +134,6 @@ public class PersonaBean implements Serializable {
         this.rolPersona = rolPersona;
     }
 
-    
     public String getCorreo() {
         return Correo;
     }
@@ -159,13 +158,13 @@ public class PersonaBean implements Serializable {
         return lista;
     }
 
-    public LinkedList<Correo> getListaCorreos(int idPersona) throws SNMPExceptions, SQLException{
+    public LinkedList<Correo> getListaCorreos(int idPersona) throws SNMPExceptions, SQLException {
         LinkedList<Correo> lista = new LinkedList<Correo>();
         CorreoDB cDB = new CorreoDB();
-        lista  = cDB.SeleccionarTodos(id);
+        lista = cDB.SeleccionarTodos(id);
         return lista;
     }
-    
+
     public void setListaTablaCorreos(LinkedList<Correo> listaTablaCorreos) {
         this.listaTablaCorreos = listaTablaCorreos;
     }
@@ -178,14 +177,14 @@ public class PersonaBean implements Serializable {
     public void setIdTelefono(int idTelefono) {
         this.idTelefono = idTelefono;
     }
-    
+
     public String getTipoTelefono(int id) {
         String tipo = "";
-        if(id == 1){
+        if (id == 1) {
             tipo = "Casa";
-        } else if (id == 2){
+        } else if (id == 2) {
             tipo = "Celular";
-        } else if (id == 3){
+        } else if (id == 3) {
             tipo = "Trabajo";
         }
         return tipo;
@@ -253,13 +252,13 @@ public class PersonaBean implements Serializable {
         this.tiposTelefono = tiposTelefono;
     }
 
-    public LinkedList<Telefono> getListaTablaTelefonos() throws SNMPExceptions, SQLException{
+    public LinkedList<Telefono> getListaTablaTelefonos() throws SNMPExceptions, SQLException {
         int id = this.getIdPersona();
         LinkedList<Telefono> lista = new LinkedList<Telefono>();
         lista = getTablaTelefonos(id);
         return lista;
     }
-    
+
     public LinkedList<Telefono> getTablaTelefonos(int idPersona) throws SNMPExceptions, SQLException {
         LinkedList<Telefono> lista = new LinkedList<Telefono>();
         TelefonoDB telDB = new TelefonoDB();
@@ -535,8 +534,8 @@ public class PersonaBean implements Serializable {
             context.invalidateSession();
         }
     }
-    
-    public void llenarCampos(Persona per) throws SNMPExceptions, SQLException{
+
+    public void llenarCampos(Persona per) throws SNMPExceptions, SQLException {
         this.setId(per.getId());
         this.setIdTipoIdentificacion(per.getIdTipoIdentificacion());
         this.setIdentificacion(per.getIdentificacion());
@@ -551,8 +550,8 @@ public class PersonaBean implements Serializable {
         this.setHideButtons("hidden");
         this.setCssClass("");
     }
-    
-    public String verPersona(Persona per) throws SNMPExceptions, SQLException{
+
+    public String verPersona(Persona per) throws SNMPExceptions, SQLException {
         this.llenarCampos(per);
         return "/usuarioEditar.xhtml?faces-redirect=true&includeViewParams=true";
     }
@@ -568,10 +567,10 @@ public class PersonaBean implements Serializable {
     }
 
     public String agregarPersona() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-        
-        Estado = 0; 
+
+        Estado = 0;
         this.setIdRol(3);
-        Persona obj = new Persona(this.getId(),this.getIdTipoIdentificacion(), this.getIdentificacion(), this.getNombre(), this.getpApellido(), this.getsApellido(),
+        Persona obj = new Persona(this.getId(), this.getIdTipoIdentificacion(), this.getIdentificacion(), this.getNombre(), this.getpApellido(), this.getsApellido(),
                 this.getContrasenna(), this.getIdRol(), this.getEstado(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
 
         PersonaDB pDB = new PersonaDB();
@@ -584,41 +583,41 @@ public class PersonaBean implements Serializable {
         this.setDeshabilitarCampo("disabled");
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
-    
+
     public String agregarTelefono() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-        
-        Telefono obj = new Telefono(this.getNumeroTel(),this.getIdTipoTelefono(),this.getIdUsuRegistra(),this.getFeRegistra(),this.getIdUsuEdita(),this.getFeEdita());
-        
+
+        Telefono obj = new Telefono(this.getNumeroTel(), this.getIdTipoTelefono(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
+
         TelefonoDB telDB = new TelefonoDB();
 
         telDB.Guardar(obj);
-        int idPersonaAgregada = this.getIdPersona(); 
+        int idPersonaAgregada = this.getIdPersona();
         telDB.GuardarTelefonoPersona(this.getIdTelefono(), idPersonaAgregada);
         this.limpiaCamposTelefono();
         this.setListaTablaTelefonos(this.getListaTablaTelefonos());
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
-    
+
     public String agregarCorreo() throws SNMPExceptions, SQLException, NamingException, ClassNotFoundException {
-        
-        Correo obj = new Correo(this.getCorreo(),this.getIdUsuRegistra(),this.getFeRegistra(),this.getIdUsuEdita(),this.getFeEdita());
-        
+
+        Correo obj = new Correo(this.getCorreo(), this.getIdUsuRegistra(), this.getFeRegistra(), this.getIdUsuEdita(), this.getFeEdita());
+
         CorreoDB cDB = new CorreoDB();
 
         cDB.Guardar(obj);
-        int idPersonaAgregada = this.getIdPersona(); 
+        int idPersonaAgregada = this.getIdPersona();
         cDB.guardarCorreoPersona(idPersonaAgregada, this.getIdCorreo());
         this.limpiaCamposCorreo();
         this.setListaTablaCorreos(this.getListaTablaCorreos());
         return "/usuarioRegistro.xhtml?faces-redirect=true";
     }
-    
-    public void limpiaCamposTelefono(){
+
+    public void limpiaCamposTelefono() {
         this.setIdTipoTelefono(0);
         this.setNumeroTel("");
     }
-    
-    public void limpiaCamposCorreo(){
+
+    public void limpiaCamposCorreo() {
         this.setCorreo("");
     }
 
@@ -643,29 +642,32 @@ public class PersonaBean implements Serializable {
         this.setIdUsuEdita(per.getIdUsuEdita());
         this.setFeEdita(per.getFeEdita());
     }
-    
-    public String eliminarTelefono(Telefono tel) throws SNMPExceptions, SQLException{
+
+    public String eliminarTelefono(Telefono tel) throws SNMPExceptions, SQLException {
         TelefonoDB telDB = new TelefonoDB();
         telDB.eliminar(tel);
         return "usuarioRegistro.xhtml?faces-redirect=true&includeViewParams=true";
     }
-    
+
     public String eliminarCorreo(Correo cor) throws SNMPExceptions, SQLException {
         CorreoDB corDB = new CorreoDB();
         corDB.eliminar(cor);
         return "usuarioRegistro.xhtml?faces-redirect=true&includeViewParams=true";
     }
-    
-    public String irARegistro(){
+
+    public String irARegistro() {
         this.limpia();
         this.limpiaCamposTelefono();
         this.cssClass = "hidden";
         this.hideButtons = "";
         return "usuarioRegistro.xhtml?faces-redirect=true";
     }
-    
-    public String cancelar(){
+
+    public String cancelar() {
         return "usuarioMant.xhtml?faces-redirect=true";
     }
 
+    public String atras() {
+        return "iniciarSesion.xhtml?faces-redirect=true";
+    }
 }
