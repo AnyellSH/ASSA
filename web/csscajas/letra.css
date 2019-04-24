@@ -1,0 +1,21 @@
+/*recurso  para la letra*/
+@font-face {
+    font-family: 'Kalam-Bold';
+    src: url('../font/Kalam-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kalam-Light';
+    src: url('../font/Kalam-Light.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face{
+font-family:'Kalam-Regular';
+src:url('../font/Kalam-Regular.ttf');
+font-weight:normal;
+font-style:normal;
+}
